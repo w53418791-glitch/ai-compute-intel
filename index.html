@@ -127,7 +127,7 @@
       <circle data-idx="10" cx="441" cy="264" r="4.5" fill="#1D9E75" stroke="#fff" stroke-width="1.5" class="chip"/>
       <line x1="441" y1="264" x2="435" y2="278" stroke="#999" stroke-width="0.5"/><text x="433" y="282" font-size="11" fill="#085041" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">BR200（规划）</text>
       <circle data-idx="11" cx="428" cy="278" r="4.5" fill="#A32D2D" stroke="#fff" stroke-width="1.5" class="chip"/>
-      <line x1="428" y1="278" x2="419" y2="296" stroke="#999" stroke-width="0.5"/><text x="415" y="300" font-size="11" fill="#791F1F" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">昇腾950PR/DT（规划）</text>
+      <line x1="428" y1="278" x2="419" y2="296" stroke="#999" stroke-width="0.5"/><text x="415" y="300" font-size="11" fill="#791F1F" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">昇腾950PR/DT（已交付）</text>
       <circle data-idx="12" cx="352.7" cy="274.3" r="4.5" fill="#A32D2D" stroke="#fff" stroke-width="1.5" class="chip"/>
       <line x1="352.7" y1="274.3" x2="343" y2="277" stroke="#999" stroke-width="0.5"/><text x="338" y="278" font-size="11" fill="#791F1F" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">昇腾910C</text>
       <circle data-idx="13" cx="403.9" cy="320.9" r="4.5" fill="#534AB7" stroke="#fff" stroke-width="1.5" class="chip"/>
@@ -280,8 +280,8 @@
       <tr><td><b>GB300 NVL72</b></td><td>NVIDIA</td><td class="num">72</td><td>GB300 Ultra</td><td class="num">≈350 PF（0.7E FP8）</td><td class="num tbd">≈145 kW（估）</td><td class="num">1</td><td class="num">≈2.4</td><td>商用（12–16 周交付）</td></tr>
       <tr><td><b>Rubin200 NVL144</b></td><td>NVIDIA</td><td class="num">144</td><td>Rubin（HBM4）</td><td class="num">≈550 PF（1.1E FP8 设计值）</td><td class="num tbd">—</td><td class="num">1</td><td class="num tbd">—</td><td>2027Q2 量产</td></tr>
       <tr><td><b>CloudMatrix 384</b></td><td>华为</td><td class="num">384</td><td>昇腾 910C</td><td class="num">≈300 PF</td><td class="num">≈559 kW</td><td class="num">16</td><td class="num">0.54</td><td>商用 750+ 套</td></tr>
-      <tr><td><b>Atlas 950 标准单元</b></td><td>华为</td><td class="num">1024</td><td>昇腾 950DT</td><td class="num">1 E FP8 ≈ 500 PF</td><td class="num tbd">≈2 MW（估）</td><td class="num">16</td><td class="num">≈0.25</td><td>2026Q4 交付</td></tr>
-      <tr><td><b>Atlas 950 满配</b></td><td>华为</td><td class="num">8192</td><td>昇腾 950DT</td><td class="num">8 E FP8 ≈ 4 EFLOPS</td><td class="num tbd">≈16 MW（估）</td><td class="num">160</td><td class="num">≈0.25</td><td>2026Q4，占地≈1000㎡</td></tr>
+      <tr><td><b>Atlas 950 标准单元</b></td><td>华为</td><td class="num">1024</td><td>昇腾 950DT</td><td class="num">1 E FP8 ≈ 500 PF</td><td class="num tbd">≈2 MW（估）</td><td class="num">16</td><td class="num">≈0.25</td><td>2026 已量产交付</td></tr>
+      <tr><td><b>Atlas 950 满配</b></td><td>华为</td><td class="num">8192</td><td>昇腾 950DT</td><td class="num">8 E FP8 ≈ 4 EFLOPS</td><td class="num tbd">≈16 MW（估）</td><td class="num">160</td><td class="num">≈0.25</td><td>2026 已量产交付，占地≈1000㎡</td></tr>
       <tr><td><b>Atlas 850E 风冷</b></td><td>华为</td><td class="num">96</td><td>昇腾 850E</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num">—</td><td class="num tbd">—</td><td>商用（风冷免改造）</td></tr>
       <tr><td><b>磐久 AL128</b></td><td>阿里云</td><td class="num">128</td><td>自研</td><td class="num tbd">未公开</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td>2026Q4 小批量</td></tr>
       <tr><td><b>曦景 S600</b></td><td>沐曦</td><td class="num">64→320</td><td>曦景</td><td class="num tbd">未公开</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td>320 卡已商用</td></tr>
@@ -313,7 +313,7 @@ var CHIPS = [
   {name:"NVIDIA H100 / H200", vendor:"NVIDIA · Hopper", policy:"casebycase", rows:[["INT8 稠密（含稀疏）","1979（3958）TOPS"],["— H100 显存","HBM3 80GB · 3.35TB/s"],["— H200 显存","HBM3e 141GB · 4.8TB/s"],["功耗","700W"],["TPP / PD","15832 / 19.4"]]},
   {name:"摩尔线程 MTT S5000", vendor:"摩尔线程 · MUSA", policy:"cna", rows:[["INT8 稠密","2000 TOPS"],["显存","80GB GDDR6 · 1.6TB/s"],["TPP / PD","16000 / ≈22.9"]]},
   {name:"壁仞 BR200", vendor:"壁仞科技（规划 2026）", policy:"cna", rows:[["INT8（估）","≈2000 TOPS"],["架构","Chiplet"],["TPP / PD","16000 / ≈20"]]},
-  {name:"华为昇腾 950PR/DT", vendor:"华为 · 昇腾（规划 2026）", policy:"cna", rows:[["FP8 / FP4","1P / 2P"],["950PR 显存","HiBL 1.0 · 144GB · 4TB/s"],["950DT 显存","HiZQ 2.0 · 128GB · 1.6TB/s"],["TPP / PD","≈12800 / ≈18.3"]]},
+  {name:"华为昇腾 950PR/DT", vendor:"华为 · 昇腾（2026 已量产交付）", policy:"cna", rows:[["FP8 / FP4","1P / 2P"],["950PR 显存","HiBL 1.0 · 144GB · 4TB/s"],["950DT 显存","HiZQ 2.0 · 128GB · 1.6TB/s"],["状态","2026 已量产交付"],["TPP / PD","≈12800 / ≈18.3"]]},
   {name:"华为昇腾 910C", vendor:"华为 · 昇腾", policy:"cna", rows:[["FP16 / INT8","800 TFLOPS / ≈1600 TOPS"],["显存","HBM 128GB · 3.2TB/s"],["功耗","350W"],["TPP / PD","12800 / 9.6"]]},
   {name:"寒武纪 思元590", vendor:"寒武纪 · 思元系列", policy:"cna", rows:[["INT8 稠密","1024 TOPS"],["显存","HBM2e/HBM3 64GB · ≈1.8TB/s"],["TPP / PD","8192 / ≈14.6"]]},
   {name:"壁仞 BR100", vendor:"壁仞科技", policy:"cna", rows:[["INT8 稠密（含稀疏）","1024（2048）TOPS"],["die 面积","1074mm² · 7nm"],["显存","HBM2e 64GB · 1.3-1.6TB/s"],["功耗","400W"],["TPP / PD","8192 / 7.63"]]},
