@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 算力情报站 · 芯片管制 / 大模型跑分 / 超节点对比</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; background: #f4f4f2; color: #2c2c2a; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 20px 16px 40px; }
+  header { background: #22324a; color: #fff; border-radius: 14px 14px 0 0; padding: 20px 24px 14px; }
+  header h1 { font-size: 19px; font-weight: 500; letter-spacing: .5px; }
+  header p { font-size: 12px; color: #b9c6d8; margin-top: 5px; }
+  nav { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  nav button { border: 1px solid #3d5171; background: transparent; color: #cfd9e8; font-size: 13px; padding: 7px 16px; border-radius: 999px; cursor: pointer; transition: all .15s; }
+  nav button.on { background: #fff; color: #22324a; border-color: #fff; font-weight: 500; }
+  main { background: #fff; border-radius: 0 0 14px 14px; padding: 18px 20px 20px; }
+  section { display: none; }
+  section.on { display: block; }
+  .card { border: 1px solid #e8e8e4; border-radius: 12px; padding: 14px 16px; margin-bottom: 14px; }
+  .card h2 { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  .card .sub { font-size: 11.5px; color: #6b6b66; line-height: 1.65; margin-bottom: 10px; }
+  .def { color: #185fa5; border-bottom: 1px dashed #85b7eb; cursor: help; }
+  .badge { display: inline-block; font-size: 11px; padding: 1px 9px; border-radius: 20px; font-weight: 500; }
+  .badge-a { background: #fcebeb; color: #a32d2d; border: 1px solid #f09595; }
+  .badge-b { background: #faeeda; color: #854f0b; border: 1px solid #fac775; }
+  .b-open { background: #eaf3de; color: #3b6d11; border: 1px solid #c0dd97; }
+  .b-close { background: #eeedfe; color: #534ab7; border: 1px solid #afa9ec; }
+  .badge-cn { background: #f1efe8; color: #888780; border: 1px solid #d3d1c7; }
+  svg { width: 100%; height: auto; display: block; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th { background: #f6f6f3; color: #5f5e5a; font-weight: 500; text-align: left; padding: 7px 8px; border-bottom: 1px solid #e2e2de; white-space: nowrap; }
+  td { padding: 7px 8px; border-bottom: 1px solid #efefeb; vertical-align: top; }
+  tr:hover td { background: #fafaf7; }
+  .num { font-variant-numeric: tabular-nums; }
+  .tbd { color: #b4b2a9; }
+  .tag { font-size: 10.5px; color: #888780; background: #f1efe8; border-radius: 4px; padding: 0 5px; margin-left: 4px; }
+  .legend-row { display: flex; flex-wrap: wrap; gap: 14px; font-size: 11.5px; color: #444; margin-top: 8px; }
+  .legend-row .li { display: inline-flex; align-items: center; gap: 5px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+  footer { font-size: 11px; color: #888780; line-height: 1.7; margin-top: 14px; padding-top: 12px; border-top: 1px dashed #dcdcd7; }
+  .chip { cursor: pointer; }
+  .tip { position: absolute; pointer-events: none; background: #fff; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,.12); padding: 10px 12px; width: 300px; z-index: 10; display: none; font-size: 12px; line-height: 1.5; }
+  .chartwrap { position: relative; }
+  .b1 { color:#791f1f; font-weight:500; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>AI 算力情报站</h1>
+  <p>美国 EAR 3A090 芯片管制 · 前沿大模型跑分 · 超节点系统对比 — 数据核实至 2026-08（多源交叉，估算项已标注）</p>
+  <nav>
+    <button class="on" data-tab="t1">芯片管制分布图</button>
+    <button data-tab="t2">大模型跑分榜</button>
+    <button data-tab="t3">超节点对比</button>
+  </nav>
+</header>
+<main>
+
+<section id="t1" class="on">
+  <div class="card">
+    <h2>美国 EAR 3A090 算力出口管制框架 · 主流 AI 芯片 TPP–PD 分布</h2>
+    <div class="sub">纵轴 TPP（<span class="def" data-tip="TPP：Total Processing Performance = 2 × MacTOPS × 操作位长（各处理单元求和）。INT8 口径即「INT8 稠密算力 × 8」。">×10¹² ops/s，对数</span>）· 横轴 PD（<span class="def" data-tip="PD：Performance Density = TPP ÷ 芯片面积（mm²）。BIS 2023.10 引入，封堵「小芯片拼大算力」。">TOPS/mm²，对数</span>）。深红 = 推定拒绝（TPP≥21K 或 DRAM≥6.5TB/s）；浅红 = 逐案审查（2026-01-15 新政）；黄 = 3A090.b。悬停芯片查看详情。</div>
+    <div class="chartwrap">
+    <svg viewBox="0 0 680 640" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <text x="40" y="24" font-size="14" font-weight="500" fill="#2C2C2A">EAR 3A090 框架 · 主流 AI 芯片 TPP–PD 分布</text>
+      <text x="44" y="38" font-size="11" fill="#5F5E5A">TPP ×10¹² ops/s（对数）</text>
+      <rect x="75" y="60" width="565" height="480" fill="#FBFBF9"/>
+      <line x1="160" y1="60" x2="160" y2="540" stroke="#E7E6E2" stroke-width="0.5"/><line x1="245" y1="60" x2="245" y2="540" stroke="#E7E6E2" stroke-width="0.5"/><line x1="330" y1="60" x2="330" y2="540" stroke="#E7E6E2" stroke-width="0.5"/><line x1="415" y1="60" x2="415" y2="540" stroke="#E7E6E2" stroke-width="0.5"/><line x1="500" y1="60" x2="500" y2="540" stroke="#E7E6E2" stroke-width="0.5"/><line x1="585" y1="60" x2="585" y2="540" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="75" y1="467.8" x2="640" y2="467.8" stroke="#E7E6E2" stroke-width="0.5"/><line x1="75" y1="395.5" x2="640" y2="395.5" stroke="#E7E6E2" stroke-width="0.5"/><line x1="75" y1="323.3" x2="640" y2="323.3" stroke="#E7E6E2" stroke-width="0.5"/><line x1="75" y1="251.0" x2="640" y2="251.0" stroke="#E7E6E2" stroke-width="0.5"/><line x1="75" y1="178.8" x2="640" y2="178.8" stroke="#E7E6E2" stroke-width="0.5"/><line x1="75" y1="106.6" x2="640" y2="106.6" stroke="#E7E6E2" stroke-width="0.5"/>
+      <rect x="75" y="60" width="565" height="162.7" fill="#F7C1C1"/>
+      <rect x="75" y="222.7" width="565" height="153.9" fill="#FCEBEB"/>
+      <rect x="293.1" y="376.6" width="346.9" height="114.4" fill="#FCEBEB"/>
+      <rect x="132.6" y="376.6" width="160.5" height="72.2" fill="#FAEEDA"/>
+      <rect x="217.7" y="448.8" width="75.4" height="42.2" fill="#FAEEDA"/>
+      <line x1="132.6" y1="60" x2="132.6" y2="540" stroke="#888780" stroke-width="0.7" stroke-dasharray="4 3"/>
+      <line x1="217.7" y1="60" x2="217.7" y2="540" stroke="#EF9F27" stroke-width="0.7" stroke-dasharray="4 3"/>
+      <line x1="293.1" y1="60" x2="293.1" y2="540" stroke="#E24B4A" stroke-width="0.7" stroke-dasharray="4 3"/>
+      <line x1="75" y1="222.7" x2="640" y2="222.7" stroke="#534AB7" stroke-width="0.9" stroke-dasharray="6 3"/>
+      <line x1="75" y1="491.0" x2="640" y2="491.0" stroke="#888780" stroke-width="0.7" stroke-dasharray="4 3"/>
+      <line x1="75" y1="448.8" x2="640" y2="448.8" stroke="#EF9F27" stroke-width="0.7" stroke-dasharray="4 3"/>
+      <line x1="75" y1="376.6" x2="640" y2="376.6" stroke="#E24B4A" stroke-width="0.7" stroke-dasharray="4 3"/>
+      <text x="132.6" y="74" font-size="11" fill="#444441" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">PD 1.6</text>
+      <text x="217.7" y="74" font-size="11" fill="#854F0B" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">PD 3.2</text>
+      <text x="293.1" y="74" font-size="11" fill="#A32D2D" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">PD 5.92</text>
+      <text x="68" y="222.7" font-size="11" fill="#534AB7" text-anchor="end" dominant-baseline="middle" font-weight="500" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">21K</text>
+      <text x="68" y="491.0" font-size="11" fill="#444441" text-anchor="end" dominant-baseline="middle" font-weight="500" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">1.6K</text>
+      <text x="68" y="448.8" font-size="11" fill="#854F0B" text-anchor="end" dominant-baseline="middle" font-weight="500" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">2.4K</text>
+      <text x="68" y="376.6" font-size="11" fill="#A32D2D" text-anchor="end" dominant-baseline="middle" font-weight="500" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">4.8K</text>
+      <text x="68" y="540" font-size="11" fill="#5F5E5A" text-anchor="end" dominant-baseline="middle">1K</text><text x="68" y="467.8" font-size="11" fill="#5F5E5A" text-anchor="end" dominant-baseline="middle">2K</text><text x="68" y="395.5" font-size="11" fill="#5F5E5A" text-anchor="end" dominant-baseline="middle">4K</text><text x="68" y="323.3" font-size="11" fill="#5F5E5A" text-anchor="end" dominant-baseline="middle">8K</text><text x="68" y="251.0" font-size="11" fill="#5F5E5A" text-anchor="end" dominant-baseline="middle">16K</text><text x="68" y="178.8" font-size="11" fill="#5F5E5A" text-anchor="end" dominant-baseline="middle">32K</text><text x="68" y="106.6" font-size="11" fill="#5F5E5A" text-anchor="end" dominant-baseline="middle">64K</text><text x="68" y="60" font-size="11" fill="#5F5E5A" text-anchor="end" dominant-baseline="middle">100K</text>
+      <text x="75" y="556" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="middle">1</text><text x="160" y="556" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="middle">2</text><text x="245" y="556" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="middle">4</text><text x="330" y="556" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="middle">8</text><text x="415" y="556" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="middle">16</text><text x="500" y="556" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="middle">32</text><text x="585" y="556" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="middle">64</text><text x="640" y="556" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="middle">100</text>
+      <rect x="75" y="60" width="565" height="480" fill="none" stroke="#888780" stroke-width="0.5"/>
+      <text x="430" y="80" font-size="12" font-weight="500" fill="#791F1F" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">推定拒绝区</text>
+      <text x="430" y="96" font-size="11" fill="#791F1F" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">TPP≥21000，或 总DRAM带宽≥6500GB/s</text>
+      <text x="180" y="260" font-size="12" font-weight="500" fill="#A32D2D" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">可逐案审查区</text>
+      <text x="180" y="276" font-size="11" fill="#791F1F" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">TPP&lt;21000 且 总DRAM带宽&lt;6500GB/s</text>
+      <text x="225" y="393" font-size="12" font-weight="500" fill="#854F0B" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">3A090.b 管控区</text>
+      <text x="225" y="409" font-size="11" fill="#633806" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">TPP 1600–4800 且 PD 1.6–5.92</text>
+      <text x="103" y="516" font-size="11" fill="#888780" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">3A090 参数范围外</text>
+      <circle cx="595.9" cy="113.3" r="8" fill="none" stroke="#A32D2D" stroke-width="0.7" stroke-dasharray="3 2"/>
+      <circle data-idx="0" cx="595.9" cy="113.3" r="4.5" fill="#639922" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="595.9" y1="113.3" x2="590" y2="90" stroke="#999" stroke-width="0.5"/><text x="585" y="80" font-size="11" fill="#27500A" text-anchor="middle" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">B300</text>
+      <circle data-idx="1" cx="571.1" cy="129.8" r="4.5" fill="#A32D2D" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="571.1" y1="129.8" x2="596" y2="130" stroke="#999" stroke-width="0.5"/><text x="600" y="130" font-size="11" fill="#791F1F" text-anchor="start" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">昇腾970（规划）</text>
+      <circle cx="554.9" cy="155.5" r="8" fill="none" stroke="#A32D2D" stroke-width="0.7" stroke-dasharray="3 2"/>
+      <circle data-idx="2" cx="554.9" cy="155.5" r="4.5" fill="#378ADD" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="554.9" y1="155.5" x2="594" y2="156" stroke="#999" stroke-width="0.5"/><text x="600" y="156" font-size="11" fill="#0C447C" text-anchor="start" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">MI355X</text>
+      <circle cx="533.5" cy="166.6" r="8" fill="none" stroke="#A32D2D" stroke-width="0.7" stroke-dasharray="3 2"/>
+      <circle data-idx="3" cx="533.5" cy="166.6" r="4.5" fill="#639922" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="533.5" y1="166.6" x2="526" y2="184" stroke="#999" stroke-width="0.5"/><text x="524" y="190" font-size="11" fill="#27500A" text-anchor="start" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">B200</text>
+      <circle cx="502.5" cy="192.7" r="8" fill="none" stroke="#A32D2D" stroke-width="0.7" stroke-dasharray="3 2"/>
+      <circle data-idx="4" cx="502.5" cy="192.7" r="4.5" fill="#639922" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="502.5" y1="192.7" x2="496" y2="202" stroke="#999" stroke-width="0.5"/><text x="490" y="206" font-size="11" fill="#27500A" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">B100</text>
+      <circle data-idx="5" cx="497" cy="206" r="4.5" fill="#A32D2D" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="497" y1="206" x2="507" y2="213" stroke="#999" stroke-width="0.5"/><text x="512" y="218" font-size="11" fill="#791F1F" text-anchor="start" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">昇腾960（规划）</text>
+      <circle data-idx="6" cx="454.7" cy="223.4" r="4.5" fill="#378ADD" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="454.7" y1="223.4" x2="445" y2="221" stroke="#999" stroke-width="0.5"/><text x="440" y="220" font-size="11" fill="#0C447C" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">MI300X</text>
+      <circle data-idx="19" cx="442" cy="232" r="4.5" fill="#378ADD" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="442" y1="232" x2="443" y2="238" stroke="#999" stroke-width="0.5"/><text x="440" y="240" font-size="11" fill="#0C447C" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">MI325X</text>
+      <circle data-idx="7" cx="481.2" cy="232.1" r="4.5" fill="#534AB7" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="481.2" y1="232.1" x2="490" y2="240" stroke="#999" stroke-width="0.5"/><text x="495" y="244" font-size="11" fill="#3C3489" text-anchor="start" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">思元690</text>
+      <circle data-idx="8" cx="438.8" cy="252" r="4.5" fill="#639922" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="438.8" y1="252" x2="432" y2="262" stroke="#999" stroke-width="0.5"/><text x="428" y="266" font-size="11" fill="#27500A" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">H100/H200</text>
+      <circle data-idx="9" cx="459.2" cy="251" r="4.5" fill="#D85A30" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="459.2" y1="251" x2="466" y2="262" stroke="#999" stroke-width="0.5"/><text x="470" y="268" font-size="11" fill="#712B13" text-anchor="start" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">MTT S5000</text>
+      <circle data-idx="10" cx="441" cy="264" r="4.5" fill="#1D9E75" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="441" y1="264" x2="435" y2="278" stroke="#999" stroke-width="0.5"/><text x="433" y="282" font-size="11" fill="#085041" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">BR200（规划）</text>
+      <circle data-idx="11" cx="428" cy="278" r="4.5" fill="#A32D2D" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="428" y1="278" x2="419" y2="296" stroke="#999" stroke-width="0.5"/><text x="415" y="300" font-size="11" fill="#791F1F" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">昇腾950PR/DT（规划）</text>
+      <circle data-idx="12" cx="352.7" cy="274.3" r="4.5" fill="#A32D2D" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="352.7" y1="274.3" x2="343" y2="277" stroke="#999" stroke-width="0.5"/><text x="338" y="278" font-size="11" fill="#791F1F" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">昇腾910C</text>
+      <circle data-idx="13" cx="403.9" cy="320.9" r="4.5" fill="#534AB7" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="403.9" y1="320.9" x2="412" y2="322" stroke="#999" stroke-width="0.5"/><text x="416" y="323" font-size="11" fill="#3C3489" text-anchor="start" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">思元590</text>
+      <circle data-idx="14" cx="324.4" cy="320.9" r="4.5" fill="#1D9E75" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="324.4" y1="320.9" x2="317" y2="319" stroke="#999" stroke-width="0.5"/><text x="312" y="318" font-size="11" fill="#085041" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">BR100</text>
+      <circle data-idx="15" cx="325.3" cy="369.8" r="4.5" fill="#A32D2D" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="325.3" y1="369.8" x2="333" y2="371" stroke="#999" stroke-width="0.5"/><text x="338" y="372" font-size="11" fill="#791F1F" text-anchor="start" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">昇腾910B</text>
+      <circle data-idx="16" cx="295.6" cy="372.5" r="4" fill="#fff" stroke="#888780" stroke-width="1.5" stroke-dasharray="2 1.5" class="chip"/>
+      <line x1="295.6" y1="372.5" x2="288" y2="370" stroke="#999" stroke-width="0.5"/><text x="283" y="368" font-size="11" fill="#444441" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">A100</text>
+      <circle data-idx="17" cx="291.7" cy="465.4" r="4.5" fill="#D85A30" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="291.7" y1="465.4" x2="282" y2="468" stroke="#999" stroke-width="0.5"/><text x="278" y="470" font-size="11" fill="#712B13" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">MTT S4000</text>
+      <circle data-idx="18" cx="255" cy="438.7" r="4" fill="#fff" stroke="#888780" stroke-width="1.5" stroke-dasharray="2 1.5" class="chip"/>
+      <line x1="255" y1="438.7" x2="246" y2="442" stroke="#999" stroke-width="0.5"/><text x="242" y="444" font-size="11" fill="#444441" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">RTX4090</text>
+      <circle data-idx="20" cx="206" cy="450" r="4.5" fill="#639922" stroke="#fff" stroke-width="1.5" class="chip"/>
+      <line x1="206" y1="450" x2="197" y2="456" stroke="#999" stroke-width="0.5"/><text x="192" y="462" font-size="11" fill="#27500A" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">H20（对华特供）</text>
+      <text x="357" y="568" font-size="12" fill="#2C2C2A" text-anchor="middle">算力密度 PD（TPP ÷ 芯片面积，TOPS/mm²）· 对数刻度</text>
+      <rect x="40" y="588" width="16" height="12" fill="#F7C1C1" stroke="#E24B4A" stroke-width="0.5"/><text x="62" y="594" font-size="11" fill="#2C2C2A" dominant-baseline="middle">推定拒绝</text>
+      <rect x="150" y="588" width="16" height="12" fill="#FCEBEB" stroke="#E24B4A" stroke-width="0.5"/><text x="172" y="594" font-size="11" fill="#2C2C2A" dominant-baseline="middle">逐案审查</text>
+      <rect x="260" y="588" width="16" height="12" fill="#FAEEDA" stroke="#BA7517" stroke-width="0.5"/><text x="282" y="594" font-size="11" fill="#2C2C2A" dominant-baseline="middle">3A090.b</text>
+      <rect x="350" y="588" width="16" height="12" fill="#FBFBF9" stroke="#B4B2A9" stroke-width="0.5"/><text x="372" y="594" font-size="11" fill="#2C2C2A" dominant-baseline="middle">范围外</text>
+      <circle cx="440" cy="594" r="4.5" fill="none" stroke="#A32D2D" stroke-width="0.7" stroke-dasharray="3 2"/><text x="450" y="594" font-size="11" fill="#2C2C2A" dominant-baseline="middle">推定拒绝（美系）</text>
+      <circle cx="44" cy="620" r="4.5" fill="#639922" stroke="#fff" stroke-width="1.5"/><text x="54" y="620" font-size="11" fill="#2C2C2A" dominant-baseline="middle">NVIDIA</text>
+      <circle cx="124" cy="620" r="4.5" fill="#378ADD" stroke="#fff" stroke-width="1.5"/><text x="134" y="620" font-size="11" fill="#2C2C2A" dominant-baseline="middle">AMD</text>
+      <circle cx="194" cy="620" r="4.5" fill="#A32D2D" stroke="#fff" stroke-width="1.5"/><text x="204" y="620" font-size="11" fill="#2C2C2A" dominant-baseline="middle">华为昇腾</text>
+      <circle cx="274" cy="620" r="4.5" fill="#534AB7" stroke="#fff" stroke-width="1.5"/><text x="284" y="620" font-size="11" fill="#2C2C2A" dominant-baseline="middle">寒武纪</text>
+      <circle cx="344" cy="620" r="4.5" fill="#1D9E75" stroke="#fff" stroke-width="1.5"/><text x="354" y="620" font-size="11" fill="#2C2C2A" dominant-baseline="middle">壁仞</text>
+      <circle cx="414" cy="620" r="4.5" fill="#D85A30" stroke="#fff" stroke-width="1.5"/><text x="424" y="620" font-size="11" fill="#2C2C2A" dominant-baseline="middle">摩尔线程</text>
+      <circle cx="500" cy="620" r="4" fill="#fff" stroke="#888780" stroke-width="1.5" stroke-dasharray="2 1.5"/><text x="510" y="620" font-size="11" fill="#2C2C2A" dominant-baseline="middle">参考/特供点</text>
+    </svg>
+    <div id="tip" class="tip"><div class="tip-name"></div><div class="tip-vendor"></div><span class="tip-badge"></span><div class="tip-policy"></div><table class="tip-tab"></table></div>
+    </div>
+  </div>
+  <footer>口径：TPP = INT8 稠密算力 × 8；PD = TPP ÷ die 面积(mm²)。「对华禁运/逐案审查」仅针对美系芯片；中国芯片标注"参数落入范围"。2026-01-15 新政（FR 2026-00789）。</footer>
+</section>
+
+<section id="t2">
+  <div class="card">
+    <h2>前沿大模型跑分榜 <span class="tag">数据核实至 2026-08</span></h2>
+    <div class="sub"><b>主榜 · Artificial Analysis 智能指数（AA Intelligence Index，0–100）</b>——由 Artificial Analysis 对 <b>MMLU-Pro（知识）、GPQA（科学推理）、AIME（数学）、SWE-bench（代码）、智能体等 10 项独立标准化评测加权综合</b>，是目前公认最权威的模型客观综合能力排名。分数越高整体越强；同一模型不同 effort 档分数不同。数据更新 2026-08-18（v4.1 口径）。</div>
+    <svg viewBox="0 0 680 470" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <text x="40" y="26" font-size="14" font-weight="500" fill="#2C2C2A">AA 智能指数 · 主榜（0–100，越高越强）</text>
+      <line x1="120" y1="50" x2="120" y2="430" stroke="#888780" stroke-width="0.5"/>
+      <line x1="120" y1="430" x2="640" y2="430" stroke="#888780" stroke-width="0.5"/>
+      <text x="110" y="430" font-size="11" fill="#5F5E5A" text-anchor="end">0</text>
+      <text x="224" y="430" font-size="11" fill="#5F5E5A" text-anchor="middle">20</text>
+      <text x="328" y="430" font-size="11" fill="#5F5E5A" text-anchor="middle">40</text>
+      <text x="432" y="430" font-size="11" fill="#5F5E5A" text-anchor="middle">60</text>
+      <text x="536" y="430" font-size="11" fill="#5F5E5A" text-anchor="middle">80</text>
+      <text x="640" y="430" font-size="11" fill="#5F5E5A" text-anchor="middle">100</text>
+      <line x1="120" y1="310" x2="640" y2="310" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="120" y1="190" x2="640" y2="190" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="120" y1="70" x2="640" y2="70" stroke="#E7E6E2" stroke-width="0.5"/>
+      <g font-size="11" font-weight="500">
+        <rect x="120" y="52" width="520" height="30" rx="4" fill="#EEEDFE"/><text x="126" y="71" fill="#26215C">Claude Opus 5 (max) · 63</text>
+        <rect x="120" y="86" width="512" height="30" rx="4" fill="#EEEDFE"/><text x="126" y="105" fill="#26215C">Claude Fable 5 / Mythos 5 · 62</text>
+        <rect x="120" y="120" width="504" height="30" rx="4" fill="#EEEDFE"/><text x="126" y="139" fill="#26215C">GPT-5.6 Sol (max) · 61</text>
+        <rect x="120" y="154" width="504" height="30" rx="4" fill="#EEEDFE"/><text x="126" y="173" fill="#26215C">Grok 4.6 (high) · 61</text>
+        <rect x="120" y="188" width="496" height="30" rx="4" fill="#C0DD97"/><text x="126" y="207" fill="#173404">Kimi K3 (max) · 60  ← 开源第一</text>
+        <rect x="120" y="222" width="479" height="30" rx="4" fill="#B5D4F4"/><text x="126" y="241" fill="#042C53">Qwen3.8-Max · 58</text>
+        <rect x="120" y="256" width="463" height="30" rx="4" fill="#F1EFE8"/><text x="126" y="275" fill="#2C2C2A">Claude Opus 4.8 · 56</text>
+        <rect x="120" y="290" width="438" height="30" rx="4" fill="#C0DD97"/><text x="126" y="309" fill="#173404">GLM-5.2 (max) · 53 ← 智谱</text>
+        <rect x="120" y="324" width="429" height="30" rx="4" fill="#C0DD97"/><text x="126" y="343" fill="#173404">DeepSeek V4-Flash 0731 · 52</text>
+        <rect x="120" y="358" width="421" height="30" rx="4" fill="#B5D4F4"/><text x="126" y="377" fill="#042C53">GPT-5.6 Luna · 51 / Gemini 3.6 Flash · 52</text>
+        <rect x="120" y="392" width="421" height="30" rx="4" fill="#B5D4F4"/><text x="126" y="411" fill="#042C53">Gemini 3.1 Pro · ≈51</text>
+      </g>
+    </svg>
+    <div class="legend-row"><span class="li"><span class="dot" style="background:#EEEDFE"></span>Anthropic</span><span class="li"><span class="dot" style="background:#C0DD97"></span>开源/开放权重</span><span class="li"><span class="dot" style="background:#B5D4F4"></span>Google/OpenAI 等</span></div>
+  </div>
+
+  <div class="card">
+    <h2>参数量 + 分项跑分明细</h2>
+    <div class="sub">各列测什么：<b>LMArena Elo</b>＝全球用户匿名盲测 A/B 投票（主观口碑，越高越好）· <b>HLE（Humanity's Last Exam）</b>＝人类最后考试，专家级最难问答 · <b>SWE-bench Verified</b>＝真实 GitHub 代码修复 · <b>τ²-Bench</b>＝智能体长程任务。MoE 模型注明「总参数 / 激活参数」。</div>
+    <div style="overflow-x:auto">
+    <table>
+      <tr><th>模型</th><th>厂商</th><th>总/激活参数</th><th>类型</th><th>AA 指数</th><th>LMArena</th><th>HLE</th><th>SWE-bench</th><th>τ²/GDPval</th></tr>
+      <tr><td><b>Claude Opus 5</b></td><td>Anthropic</td><td class="tbd">—</td><td><span class="badge b-close">闭源</span></td><td class="num"><b>63</b></td><td class="num">1493</td><td class="num">64.7</td><td class="num">96.0</td><td class="num tbd">—</td></tr>
+      <tr><td><b>Claude Fable 5</b> / Mythos 5</td><td>Anthropic</td><td class="tbd">—</td><td><span class="badge b-close">闭源</span></td><td class="num"><b>62</b></td><td class="num"><b>1506 #1</b></td><td class="num">59.0</td><td class="num">95.0</td><td class="num tbd">—</td></tr>
+      <tr><td><b>GPT-5.6 Sol</b></td><td>OpenAI</td><td class="num tbd">≈1.2T（估）</td><td><span class="badge b-close">闭源</span></td><td class="num"><b>61</b></td><td class="num tbd">≈1480（估）</td><td class="num tbd">≈57（估）</td><td class="num tbd">≈89（估）</td><td class="num tbd">—</td></tr>
+      <tr><td><b>Grok 4.6</b></td><td>xAI</td><td class="tbd">—</td><td><span class="badge b-close">闭源</span></td><td class="num"><b>61</b></td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num">GDPval 1753</td></tr>
+      <tr><td><b>Kimi K3</b></td><td>月之暗面</td><td class="num">2.8T / 104B</td><td><span class="badge b-open">开源</span></td><td class="num"><b>60</b></td><td class="num tbd">≈1475（估）</td><td class="num">56.0</td><td class="num tbd">≈85（估）</td><td class="num">GDPval 1687</td></tr>
+      <tr><td><b>Qwen3.8-Max</b></td><td>阿里巴巴</td><td class="tbd">—</td><td><span class="badge b-close">闭源</span></td><td class="num"><b>58</b></td><td class="num">1491</td><td class="num">56.2</td><td class="num tbd">—</td><td class="num tbd">—</td></tr>
+      <tr><td><b>Claude Opus 4.8</b></td><td>Anthropic</td><td class="tbd">—</td><td><span class="badge b-close">闭源</span></td><td class="num">56</td><td class="num tbd">—</td><td class="num">57.9</td><td class="num">88.6</td><td class="num tbd">—</td></tr>
+      <tr><td><b>GLM-5.3 / 5.2</b></td><td>智谱 AI</td><td class="num tbd">≈745B / ≈44B（估）</td><td><span class="badge b-open">开源</span></td><td class="num">53（5.2）</td><td class="num tbd">≈1465（估）</td><td class="num"><b>62.5（5.3）</b></td><td class="num tbd">≈80（估）</td><td class="num">89.7（GLM-5）</td></tr>
+      <tr><td><b>DeepSeek V4-Pro</b></td><td>深度求索</td><td class="num">1.6T / 49B</td><td><span class="badge b-open">开源 MIT</span></td><td class="num tbd">≈54（估）</td><td class="num tbd">≈1450（估）</td><td class="num">48.2</td><td class="num">80.6</td><td class="num tbd">—</td></tr>
+      <tr><td><b>DeepSeek V4-Flash</b></td><td>深度求索</td><td class="num">284B / 13B</td><td><span class="badge b-open">开源 MIT</span></td><td class="num">52</td><td class="num tbd">≈1440（估）</td><td class="num">45.1</td><td class="num">79.0</td><td class="num">TerminalB 82.7</td></tr>
+      <tr><td><b>Gemini 3.1 Pro</b></td><td>Google</td><td class="num tbd">≈1.0T（估）</td><td><span class="badge b-close">闭源</span></td><td class="num tbd">≈51</td><td class="num tbd">—</td><td class="num">51.4</td><td class="num">80.6</td><td class="num">τ² 90.8</td></tr>
+      <tr><td><b>GPT-5.6 Luna</b></td><td>OpenAI</td><td class="tbd">—</td><td><span class="badge b-close">闭源</span></td><td class="num">51–52</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td></tr>
+    </table>
+    </div>
+    <div class="legend-row"><span class="li"><span class="dot" style="background:#CC785C"></span>Anthropic</span><span class="li"><span class="dot" style="background:#10A37F"></span>OpenAI</span><span class="li"><span class="dot" style="background:#4285F4"></span>Google</span><span class="li"><span class="dot" style="background:#8B5CF6"></span>xAI</span><span class="li"><span class="dot" style="background:#4D6BFE"></span>DeepSeek</span><span class="li"><span class="dot" style="background:#2563EB"></span>阿里</span><span class="li"><span class="dot" style="background:#0EA5A0"></span>月之暗面</span><span class="li"><span class="dot" style="background:#16A34A"></span>智谱</span></div>
+  </div>
+
+  <div class="card">
+    <h2>雷达图 · 六模型多维度对比（≈估算值）</h2>
+    <div class="sub">五维：AA 指数 · SWE-bench · HLE · LMArena（归一）· 智能体（τ²/GDPval 归一）。缺失数据按估算绘制，正式数据以官方 model card 为准。</div>
+    <svg viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <text x="40" y="26" font-size="14" font-weight="500" fill="#2C2C2A">六模型能力雷达</text>
+      <g id="radar2"></g>
+      <text x="40" y="440" font-size="11" fill="#6b6b66">注：LMArena 归一区间 1380–1520 → 0–100；智能体维度参考 τ²-Bench / GDPval 综合。≈ 为多源估算。</text>
+    </svg>
+    <div class="legend-row" id="radar2-legend"></div>
+  </div>
+  <footer>主榜来源：Artificial Analysis（2026-08-18，v4.1 口径）；LMArena（2026-08-12）；DataLearnerAI 聚合（HLE/SWE-bench/τ²）。≈ 估算项已标注，— 为官方未公开。</footer>
+</section>
+
+<section id="t3">
+  <div class="card">
+    <h2>超节点系统对比 · 算力 / 功耗 / 规模 <span class="tag">数据核实至 2026-08</span></h2>
+    <div class="sub">气泡图：横轴 = 总算力（BF16 PFLOPS，对数），纵轴 = 系统功耗（kW，对数），气泡大小 = 并联卡数。能效（PF/kW）越高越靠右下。虚线气泡 = 估算/待核实项。</div>
+    <svg viewBox="0 0 680 470" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
+      <text x="40" y="26" font-size="14" font-weight="500" fill="#2C2C2A">算力–功耗气泡图（气泡大小 ∝ 卡数，对数轴）</text>
+      <rect x="90" y="60" width="520" height="330" fill="#FBFBF9"/>
+      <line x1="90" y1="60" x2="610" y2="60" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="90" y1="135" x2="610" y2="135" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="90" y1="210" x2="610" y2="210" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="90" y1="285" x2="610" y2="285" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="90" y1="390" x2="610" y2="390" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="90" y1="60" x2="90" y2="390" stroke="#888780" stroke-width="0.5"/>
+      <line x1="90" y1="390" x2="610" y2="390" stroke="#888780" stroke-width="0.5"/>
+      <text x="85" y="390" font-size="10" fill="#5F5E5A" text-anchor="end">100</text>
+      <text x="85" y="285" font-size="10" fill="#5F5E5A" text-anchor="end">300</text>
+      <text x="85" y="210" font-size="10" fill="#5F5E5A" text-anchor="end">1k</text>
+      <text x="85" y="135" font-size="10" fill="#5F5E5A" text-anchor="end">3k</text>
+      <text x="85" y="60" font-size="10" fill="#5F5E5A" text-anchor="end">10k</text>
+      <circle cx="227" cy="368" r="9.6" fill="#639922" fill-opacity="0.3" stroke="#3B6D11" stroke-width="1.5"/>
+      <text x="227" y="392" font-size="11" fill="#27500A" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">GB200 NVL72 · 180PF/145kW</text>
+      <circle cx="299" cy="365" r="9.6" fill="#639922" fill-opacity="0.2" stroke="#3B6D11" stroke-width="1.3" stroke-dasharray="3 2"/>
+      <text x="299" y="412" font-size="11" fill="#5F5E5A" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">GB300 NVL72 · ≈350PF/≈145kW（估）</text>
+      <circle cx="282" cy="287" r="11.7" fill="#A32D2D" fill-opacity="0.3" stroke="#791F1F" stroke-width="1.5"/>
+      <text x="282" y="262" font-size="11" fill="#791F1F" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">CloudMatrix 384 · ≈300PF/≈559kW</text>
+      <circle cx="337" cy="211" r="13" fill="#A32D2D" fill-opacity="0.25" stroke="#791F1F" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <text x="410" y="180" font-size="11" fill="#791F1F" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">Atlas 950 单元 1024卡（估 ≈500PF/≈2MW）</text>
+      <circle cx="561" cy="88" r="15.7" fill="#A32D2D" fill-opacity="0.2" stroke="#791F1F" stroke-width="1.3" stroke-dasharray="3 2"/>
+      <text x="430" y="70" font-size="11" fill="#791F1F" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">Atlas 950 满配 8192卡（估 ≈4EF/≈16MW）</text>
+      <circle cx="150" cy="330" r="8" fill="none" stroke="#B4B2A9" stroke-width="1.2" stroke-dasharray="4 3"/>
+      <text x="150" y="355" font-size="11" fill="#888780" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">AMD / 摩尔线程夸娥 / 海光 / 中兴（待核实）</text>
+      <text x="40" y="445" font-size="11" fill="#5F5E5A">总算力 →（BF16 PFLOPS，对数）</text>
+      <text x="34" y="140" font-size="11" fill="#5F5E5A" transform="rotate(-90 34 140)">功耗 (kW，对数)</text>
+    </svg>
+    <div class="legend-row"><span class="li"><span class="dot" style="background:#639922"></span>NVIDIA</span><span class="li"><span class="dot" style="background:#A32D2D"></span>华为</span><span class="li"><span class="dot" style="background:#B4B2A9"></span>待核实</span></div>
+  </div>
+  <div class="card">
+    <h2>超节点参数明细表</h2>
+    <div class="sub">总算力统一折算 BF16 口径（FP8 ≈ 2×BF16）；功耗为系统级（含网络/制冷）。「估」= 按单卡或公开数据推算。</div>
+    <div style="overflow-x:auto">
+    <table>
+      <tr><th>产品</th><th>厂商</th><th>卡数</th><th>卡型</th><th>总算力 BF16</th><th>系统功耗</th><th>机柜</th><th>能效 PF/kW</th><th>状态</th></tr>
+      <tr><td><b>GB200 NVL72</b></td><td>NVIDIA</td><td class="num">72</td><td>GB200 GPU</td><td class="num">180 PF</td><td class="num">145 kW</td><td class="num">1</td><td class="num">1.24</td><td>商用</td></tr>
+      <tr><td><b>GB300 NVL72</b></td><td>NVIDIA</td><td class="num">72</td><td>GB300 Ultra</td><td class="num">≈350 PF（0.7E FP8）</td><td class="num tbd">≈145 kW（估）</td><td class="num">1</td><td class="num">≈2.4</td><td>商用（12–16 周交付）</td></tr>
+      <tr><td><b>Rubin200 NVL144</b></td><td>NVIDIA</td><td class="num">144</td><td>Rubin（HBM4）</td><td class="num">≈550 PF（1.1E FP8 设计值）</td><td class="num tbd">—</td><td class="num">1</td><td class="num tbd">—</td><td>2027Q2 量产</td></tr>
+      <tr><td><b>CloudMatrix 384</b></td><td>华为</td><td class="num">384</td><td>昇腾 910C</td><td class="num">≈300 PF</td><td class="num">≈559 kW</td><td class="num">16</td><td class="num">0.54</td><td>商用 750+ 套</td></tr>
+      <tr><td><b>Atlas 950 标准单元</b></td><td>华为</td><td class="num">1024</td><td>昇腾 950DT</td><td class="num">1 E FP8 ≈ 500 PF</td><td class="num tbd">≈2 MW（估）</td><td class="num">16</td><td class="num">≈0.25</td><td>2026Q4 交付</td></tr>
+      <tr><td><b>Atlas 950 满配</b></td><td>华为</td><td class="num">8192</td><td>昇腾 950DT</td><td class="num">8 E FP8 ≈ 4 EFLOPS</td><td class="num tbd">≈16 MW（估）</td><td class="num">160</td><td class="num">≈0.25</td><td>2026Q4，占地≈1000㎡</td></tr>
+      <tr><td><b>Atlas 850E 风冷</b></td><td>华为</td><td class="num">96</td><td>昇腾 850E</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num">—</td><td class="num tbd">—</td><td>商用（风冷免改造）</td></tr>
+      <tr><td><b>磐久 AL128</b></td><td>阿里云</td><td class="num">128</td><td>自研</td><td class="num tbd">未公开</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td>2026Q4 小批量</td></tr>
+      <tr><td><b>曦景 S600</b></td><td>沐曦</td><td class="num">64→320</td><td>曦景</td><td class="num tbd">未公开</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td>320 卡已商用</td></tr>
+      <tr><td><b>BR 光互联超节点</b></td><td>壁仞</td><td class="num">128→1024</td><td>BR 系列</td><td class="num tbd">未公开</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td>2027Q1 批量</td></tr>
+      <tr><td><b>OEX Matrix</b></td><td>中兴</td><td class="num">64→512</td><td>自研</td><td class="num tbd">未公开</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td>512 卡已商用</td></tr>
+      <tr><td><b>MI355X 平台</b></td><td>AMD</td><td class="num tbd">—</td><td>MI355X</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td>待核实</td></tr>
+      <tr><td><b>夸娥万卡集群</b></td><td>摩尔线程</td><td class="num">10000+</td><td>MTT S5000</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td>2025.12 发布</td></tr>
+      <tr><td><b>海光深算</b></td><td>海光</td><td class="num tbd">—</td><td>DCU</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td>待核实</td></tr>
+    </table>
+    </div>
+  </div>
+  <footer>来源：NVIDIA / 华为 WAIC 2026 / 鲲鹏昇腾开发者社区 / SemiAnalysis / Tom's Hardware / TrendForce / 中证网（2026-07-17）。GB300 功耗、Atlas 950 功耗、AMD/摩尔线程/海光数据为估算或待官方公布。</footer>
+</section>
+
+</main>
+<footer style="margin-top:6px">AI 算力情报站 · v0.2 正式版 — 数据核实至 2026-08-27；所有「估」/「待核实」项将在官方数据发布后持续更新。</footer>
+</div>
+
+<script>
+var CHIPS = [
+  {name:"NVIDIA B300 Ultra", vendor:"NVIDIA · Blackwell Ultra", policy:"denial", rows:[["INT8 稠密","≈7500 TOPS"],["FP8 / FP4","≈7.5P / 15P"],["显存","HBM3e 288GB · 8TB/s"],["功耗","1400W"],["TPP / PD","≈60000 / 69.8"]]},
+  {name:"华为昇腾 970", vendor:"华为 · 昇腾（规划 2028Q4）", policy:"cna", rows:[["FP8 / FP4","4P / 8P"],["INT8（估）","≈6400 TOPS"],["显存","HBM 288GB · 14.4TB/s"],["TPP / PD","≈51200 / ≈57"]]},
+  {name:"AMD MI355X", vendor:"AMD · CDNA 4", policy:"denial", rows:[["INT8 稠密","≈5000 TOPS"],["显存","HBM3e 288GB · 8TB/s"],["功耗","1400W"],["TPP / PD","≈40000 / ≈50"]]},
+  {name:"NVIDIA B200 SXM", vendor:"NVIDIA · Blackwell", policy:"denial", rows:[["INT8 稠密","4500 TOPS"],["显存","HBM3e 192GB · 8TB/s"],["功耗","1000W"],["TPP / PD","36000 / 42.0"]]},
+  {name:"NVIDIA B100 SXM", vendor:"NVIDIA · Blackwell", policy:"denial", rows:[["INT8 稠密","3500 TOPS"],["显存","HBM3e 192GB · 8TB/s"],["功耗","700W"],["TPP / PD","28000 / 32.6"]]},
+  {name:"华为昇腾 960", vendor:"华为 · 昇腾（规划 2027Q4）", policy:"cna", rows:[["FP8 / FP4","2P / 4P"],["INT8（估）","≈3200 TOPS"],["显存","HBM 288GB · 9.6TB/s"],["TPP / PD","≈25600 / ≈32"]]},
+  {name:"AMD MI300X", vendor:"AMD · CDNA 3", policy:"casebycase", rows:[["INT8 稠密","≈2607 TOPS"],["显存","HBM3 192GB · 5.2TB/s"],["功耗","750W"],["TPP / PD","≈20856 / 22.1"]]},
+  {name:"寒武纪 思元690", vendor:"寒武纪（2026 量产）", policy:"cna", rows:[["INT8 稠密","≈2400 TOPS"],["显存","HBM3 196GB · ≈3.35TB/s"],["封装","双die Chiplet"],["TPP / PD","≈19200 / ≈27.4"]]},
+  {name:"NVIDIA H100 / H200", vendor:"NVIDIA · Hopper", policy:"casebycase", rows:[["INT8 稠密（含稀疏）","1979（3958）TOPS"],["— H100 显存","HBM3 80GB · 3.35TB/s"],["— H200 显存","HBM3e 141GB · 4.8TB/s"],["功耗","700W"],["TPP / PD","15832 / 19.4"]]},
+  {name:"摩尔线程 MTT S5000", vendor:"摩尔线程 · MUSA", policy:"cna", rows:[["INT8 稠密","2000 TOPS"],["显存","80GB GDDR6 · 1.6TB/s"],["TPP / PD","16000 / ≈22.9"]]},
+  {name:"壁仞 BR200", vendor:"壁仞科技（规划 2026）", policy:"cna", rows:[["INT8（估）","≈2000 TOPS"],["架构","Chiplet"],["TPP / PD","16000 / ≈20"]]},
+  {name:"华为昇腾 950PR/DT", vendor:"华为 · 昇腾（规划 2026）", policy:"cna", rows:[["FP8 / FP4","1P / 2P"],["950PR 显存","HiBL 1.0 · 144GB · 4TB/s"],["950DT 显存","HiZQ 2.0 · 128GB · 1.6TB/s"],["TPP / PD","≈12800 / ≈18.3"]]},
+  {name:"华为昇腾 910C", vendor:"华为 · 昇腾", policy:"cna", rows:[["FP16 / INT8","800 TFLOPS / ≈1600 TOPS"],["显存","HBM 128GB · 3.2TB/s"],["功耗","350W"],["TPP / PD","12800 / 9.6"]]},
+  {name:"寒武纪 思元590", vendor:"寒武纪 · 思元系列", policy:"cna", rows:[["INT8 稠密","1024 TOPS"],["显存","HBM2e/HBM3 64GB · ≈1.8TB/s"],["TPP / PD","8192 / ≈14.6"]]},
+  {name:"壁仞 BR100", vendor:"壁仞科技", policy:"cna", rows:[["INT8 稠密（含稀疏）","1024（2048）TOPS"],["die 面积","1074mm² · 7nm"],["显存","HBM2e 64GB · 1.3-1.6TB/s"],["功耗","400W"],["TPP / PD","8192 / 7.63"]]},
+  {name:"华为昇腾 910B", vendor:"华为 · 昇腾", policy:"cna", rows:[["FP16 / INT8","320 TFLOPS / 640 TOPS"],["die 面积","≈665.6mm²"],["显存","HBM2e 64GB · 400GB/s"],["功耗","320W"],["TPP / PD","5120 / 7.69"]]},
+  {name:"NVIDIA A100（参考）", vendor:"NVIDIA · Ampere", policy:"casebycase", rows:[["INT8 稠密（含稀疏）","624（1248）TOPS"],["显存","HBM2e 80GB · 2.0TB/s"],["功耗","400W"],["TPP / PD","4992 / 6.04"]]},
+  {name:"摩尔线程 MTT S4000", vendor:"摩尔线程 · MUSA", policy:"cnb", rows:[["INT8 稠密","256 TOPS"],["显存","GDDR6 48GB · 768GB/s"],["TPP / PD","2048 / 5.85"]]},
+  {name:"NVIDIA RTX 4090（参考）", vendor:"NVIDIA · 消费级", policy:"usb", rows:[["INT8 稠密（含稀疏）","330（660）TOPS"],["显存","GDDR6X 24GB · 1.0TB/s"],["功耗","450W"],["TPP / PD","2642 / 4.34"]]},
+  {name:"AMD MI325X", vendor:"AMD · CDNA 3（点名型号）", policy:"casebycase", rows:[["INT8 稠密","≈2607 TOPS"],["显存","HBM3e 256GB · 6.0TB/s"],["TPP / PD","≈20856 / 22.1"]]},
+  {name:"NVIDIA H20（对华特供）", vendor:"NVIDIA · Hopper 特供版", policy:"h20", rows:[["INT8 稠密","296 TOPS（压降）"],["显存","HBM3 96GB · 4.0TB/s"],["die 面积","814mm²（SM 禁用）"],["TPP / PD","2368 / 2.91"]]}
+];
+var BADGE_TEXT = { denial:"3A090.a · 对华推定拒绝", casebycase:"3A090.a · 对华逐案审查", usb:"3A090.b · 对华受限", h20:"3A090 参数范围外", cna:"参数落入 3A090.a 范围", cnb:"参数落入 3A090.b 范围" };
+var BADGE_CLS = { denial:"badge-a", casebycase:"b-close", usb:"badge-b", h20:"b-open", cna:"badge-cn", cnb:"badge-cn" };
+var POLICY_TEXT = { denial:"对华出口：推定拒绝（TPP≥21000 或 DRAM≥6500GB/s）", casebycase:"对华出口：逐案审查（TPP<21000 且 DRAM<6500GB/s）", usb:"对华出口：受限（3A090.b，需许可）", h20:"对华销售：不受 3A090 限制", cna:"中国自研芯片：不适用美国出口许可；参数落入 3A090.a 基准", cnb:"中国自研芯片：参数落入 3A090.b 基准" };
+var tip = document.getElementById("tip");
+function place(ev){ var cw = document.querySelector(".chartwrap").getBoundingClientRect(); var x = ev.clientX - cw.left + 14, y = ev.clientY - cw.top - 10; if (x + 300 > cw.width - 8) x = ev.clientX - cw.left - 314; if (y + 280 > cw.height - 8) y = ev.clientY - cw.top - 290; if (y < 8) y = 8; tip.style.left = x + "px"; tip.style.top = y + "px"; }
+function showTip(d, ev){ tip.querySelector(".tip-name").textContent = d.name; tip.querySelector(".tip-vendor").textContent = d.vendor; var b = tip.querySelector(".tip-badge"); b.textContent = BADGE_TEXT[d.policy]; b.className = "tip-badge " + (BADGE_CLS[d.policy] || "badge-cn"); tip.querySelector(".tip-policy").textContent = POLICY_TEXT[d.policy]; var tb = tip.querySelector(".tip-tab"); tb.innerHTML = ""; d.rows.forEach(function(r){ var tr = document.createElement("tr"); var td1 = document.createElement("td"); td1.className = "k"; td1.textContent = r[0]; var td2 = document.createElement("td"); td2.className = "v"; td2.textContent = r[1]; tr.appendChild(td1); tr.appendChild(td2); tb.appendChild(tr); }); tip.style.display = "block"; place(ev); }
+document.querySelectorAll(".chip").forEach(function(c){ var d = CHIPS[+c.getAttribute("data-idx")]; var orig = +c.getAttribute("r"); c.addEventListener("mouseenter", function(e){ c.setAttribute("r", orig + 2.5); c.setAttribute("stroke", "#111"); c.setAttribute("stroke-width", "2"); showTip(d, e); }); c.addEventListener("mousemove", place); c.addEventListener("mouseleave", function(){ c.setAttribute("r", orig); c.setAttribute("stroke", "#fff"); c.setAttribute("stroke-width", "1.5"); tip.style.display = "none"; }); });
+document.querySelectorAll("[data-tip]").forEach(function(el){ el.addEventListener("mouseenter", function(e){ tip.querySelector(".tip-name").textContent = ""; tip.querySelector(".tip-vendor").textContent = ""; var b = tip.querySelector(".tip-badge"); b.textContent = ""; b.className = "tip-badge"; tip.querySelector(".tip-policy").textContent = ""; var tb = tip.querySelector(".tip-tab"); tb.innerHTML = ""; var tr = document.createElement("tr"); var td = document.createElement("td"); td.className = "v"; td.textContent = el.getAttribute("data-tip"); tr.appendChild(td); tb.appendChild(tr); tip.style.display = "block"; place(e); }); el.addEventListener("mousemove", place); el.addEventListener("mouseleave", function(){ tip.style.display = "none"; }); });
+
+(function(){
+  var nav = document.querySelectorAll("nav button");
+  nav.forEach(function(b){ b.addEventListener("click", function(){ nav.forEach(function(x){ x.classList.remove("on"); }); b.classList.add("on"); document.querySelectorAll("main section").forEach(function(s){ s.classList.remove("on"); }); document.getElementById(b.getAttribute("data-tab")).classList.add("on"); }); });
+  var RAD2 = { "Claude Fable 5":["#CC785C",[62,95,59,90,88]], "Claude Opus 5":["#B4532A",[63,96,64.7,81,90]], "GPT-5.6 Sol":["#10A37F",[61,89,57,71,92]], "Kimi K3":["#0EA5A0",[60,85,56,68,93]], "DeepSeek V4-Pro":["#4D6BFE",[54,80.6,48.2,50,82]], "GLM-5.3":["#16A34A",[55,80,62.5,61,89]] };
+  var cx=330, cy=250, R=120, n=5, names=["AA 指数","SWE-bench","HLE","LMArena","智能体"];
+  var angles = names.map(function(_,i){ return -Math.PI/2 + i*2*Math.PI/n; });
+  var pt = function(i, frac){ return [cx + R*frac*Math.cos(angles[i]), cy + R*frac*Math.sin(angles[i])]; };
+  var g = document.getElementById("radar2");
+  for (var ring=1; ring<=3; ring++){ var pts=[]; for (var i=0;i<n;i++){ var p=pt(i, ring/3); pts.push(p[0].toFixed(1)+","+p[1].toFixed(1)); } var poly=document.createElementNS("http://www.w3.org/2000/svg","polygon"); poly.setAttribute("points",pts.join(" ")); poly.setAttribute("fill","none"); poly.setAttribute("stroke","#e2e2de"); poly.setAttribute("stroke-width","0.5"); g.appendChild(poly); }
+  for (var i=0;i<n;i++){ var p=pt(i,1); var l=document.createElementNS("http://www.w3.org/2000/svg","line"); l.setAttribute("x1",cx); l.setAttribute("y1",cy); l.setAttribute("x2",p[0]); l.setAttribute("y2",p[1]); l.setAttribute("stroke","#e2e2de"); l.setAttribute("stroke-width","0.5"); g.appendChild(l); var t=document.createElementNS("http://www.w3.org/2000/svg","text"); t.setAttribute("x",(cx+R*1.25*Math.cos(angles[i]))); t.setAttribute("y",(cy+R*1.25*Math.sin(angles[i]))); t.setAttribute("text-anchor","middle"); t.setAttribute("dominant-baseline","middle"); t.setAttribute("font-size","11"); t.setAttribute("fill","#5F5E5A"); t.textContent=names[i]; g.appendChild(t); }
+  var legend = document.getElementById("radar2-legend");
+  Object.keys(RAD2).forEach(function(name){ var d=RAD2[name]; var pts=[]; for (var i=0;i<n;i++){ var v=d[1][i]; if(i===3){ v = (v-1380)/140*100; } if(i===4){ v = (v-70)/40*100; } var p=pt(i, Math.max(0.04, Math.min(1, v/100))); pts.push(p[0].toFixed(1)+","+p[1].toFixed(1)); } var poly=document.createElementNS("http://www.w3.org/2000/svg","polygon"); poly.setAttribute("points",pts.join(" ")); poly.setAttribute("fill",d[0]); poly.setAttribute("fill-opacity","0.16"); poly.setAttribute("stroke",d[0]); poly.setAttribute("stroke-width","1.4"); g.appendChild(poly); var span=document.createElement("span"); span.className="li"; span.innerHTML='<span class="dot" style="background:'+d[0]+'"></span>'+name; legend.appendChild(span); });
+})();
+</script>
+</body>
+</html>

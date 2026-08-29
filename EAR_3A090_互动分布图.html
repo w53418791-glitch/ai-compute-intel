@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美国 EAR 3A090 算力出口管制 · 主流 AI 芯片 TPP–PD 互动分布图（含 2026.1 逐案审查新政）</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 24px; background: #fafafa; color: #2c2c2a; font-family: system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; }
+  .wrap { max-width: 800px; margin: 0 auto; }
+  h1 { font-size: 17px; font-weight: 500; margin: 0 0 6px; }
+  .hint { font-size: 12px; color: #5f5e5a; margin-bottom: 12px; line-height: 1.6; }
+  .def { color: #185fa5; border-bottom: 1px dashed #85b7eb; cursor: help; padding: 2px 4px; font-weight: 500; }
+  .def:hover { background: #e6f1fb; border-radius: 4px; }
+  .chartwrap { position: relative; background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 8px; }
+  svg { width: 100%; height: auto; display: block; }
+  .chip { cursor: pointer; }
+  .tip { position: absolute; pointer-events: none; background: #fff; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,.12); padding: 10px 12px; width: 310px; z-index: 10; display: none; font-size: 12px; line-height: 1.5; }
+  .tip-name { font-size: 13px; font-weight: 500; }
+  .tip-vendor { font-size: 11px; color: #5f5e5a; margin: 1px 0 6px; }
+  .tip-badge { display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 20px; margin-bottom: 4px; }
+  .badge-a { background: #fcebeb; color: #a32d2d; border: 1px solid #f09595; }
+  .badge-case { background: #eeedfe; color: #534ab7; border: 1px solid #afa9ec; }
+  .badge-b { background: #faeeda; color: #854f0b; border: 1px solid #fac775; }
+  .badge-ok { background: #eaf3de; color: #3b6d11; border: 1px solid #c0dd97; }
+  .badge-cn { background: #f1efe8; color: #5f5e5a; border: 1px solid #d3d1c7; }
+  .tip-policy { font-size: 11px; color: #5f5e5a; margin-bottom: 6px; }
+  .tip-tab { width: 100%; border-collapse: collapse; }
+  .tip-tab td { padding: 2px 0; vertical-align: top; }
+  .tip-tab td.k { color: #5f5e5a; width: 96px; white-space: nowrap; }
+  .tip-tab td.v { color: #2c2c2a; }
+  .note { font-size: 12px; color: #5f5e5a; line-height: 1.7; margin-top: 12px; background: #f5f5f4; border: 1px solid #e5e5e3; border-radius: 8px; padding: 10px 14px; }
+  .note b { color: #222; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>美国 EAR 3A090 算力出口管制 · 主流 AI 芯片 TPP–PD 互动分布图（含 2026.1 逐案审查新政）</h1>
+  <div class="hint">🖱 悬停任意芯片查看算力 / 显存 / 审查政策；悬停 <span class="def" data-tip="TPP：Total Processing Performance（总处理性能）= 2 × MacTOPS × 操作位长（所有处理单元求和）。INT8 口径下即「INT8 稠密算力（TOPS）× 8」。BIS 用 TPP 衡量芯片峰值算力，是 3A090 的核心管控阈值。">TPP</span> 与 <span class="def" data-tip="PD：Performance Density（性能密度）= TPP ÷ 芯片面积（mm²）。BIS 于 2023 年 10 月引入，用于封堵「多颗小芯片拼出大算力」的规避手法，算力密度越高越容易被管控。">PD</span> 查看定义。<br><b style="color:#a32d2d">2026-01-15 新政：</b>「对华禁运/逐案审查/推定拒绝」仅适用于<b>美国及受 EAR 管辖的芯片</b>（NVIDIA、AMD 等）；中国自研芯片（华为/寒武纪/壁仞/摩尔线程）标注为「参数落入 3A090 范围」，不适用美国出口许可。紫色虚线 = TPP 21K 上限（<b>其下为逐案审查，其上为推定拒绝</b>），红色虚线圈 = 推定拒绝。</div>
+  <div class="chartwrap">
+    <svg id="chart" viewBox="0 0 680 640" role="img" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,-apple-system,'Segoe UI',sans-serif">
+      <title>美国EAR 3A090算力出口管制框架 · 主流AI芯片TPP-PD互动分布图（含2026年1月逐案审查新政）</title>
+      <desc>纵轴TPP横轴PD，深红为推定拒绝区，浅红为可逐案审查区，黄色为3A090.b，悬停芯片查看参数与政策</desc>
+      <text x="40" y="24" font-size="14" font-weight="500" fill="#2C2C2A">美国 EAR 3A090 算力出口管制框架 · 主流 AI 芯片 TPP–PD 分布</text>
+      <text x="44" y="38" font-size="11" fill="#5F5E5A" data-tip="TPP：Total Processing Performance（总处理性能）= 2 × MacTOPS × 操作位长（所有处理单元求和）。INT8 口径即「INT8 稠密算力（TOPS）× 8」。BIS 用它衡量芯片峰值算力，是 3A090 的核心管控阈值。">TPP ×10¹² ops/s（对数）</text>
+      <rect x="75" y="60" width="565" height="480" fill="#FBFBF9"/>
+      <line x1="160" y1="60" x2="160" y2="540" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="245" y1="60" x2="245" y2="540" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="330" y1="60" x2="330" y2="540" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="415" y1="60" x2="415" y2="540" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="500" y1="60" x2="500" y2="540" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="585" y1="60" x2="585" y2="540" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="75" y1="467.8" x2="640" y2="467.8" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="75" y1="395.5" x2="640" y2="395.5" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="75" y1="323.3" x2="640" y2="323.3" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="75" y1="251.0" x2="640" y2="251.0" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="75" y1="178.8" x2="640" y2="178.8" stroke="#E7E6E2" stroke-width="0.5"/>
+      <line x1="75" y1="106.6" x2="640" y2="106.6" stroke="#E7E6E2" stroke-width="0.5"/>
+      <rect x="75" y="60" width="565" height="162.7" fill="#F7C1C1"/>
+      <rect x="75" y="222.7" width="565" height="153.9" fill="#FCEBEB"/>
+      <rect x="293.1" y="376.6" width="346.9" height="114.4" fill="#FCEBEB"/>
+      <rect x="132.6" y="376.6" width="160.5" height="72.2" fill="#FAEEDA"/>
+      <rect x="217.7" y="448.8" width="75.4" height="42.2" fill="#FAEEDA"/>
+      <line x1="132.6" y1="60" x2="132.6" y2="540" stroke="#888780" stroke-width="0.7" stroke-dasharray="4 3"/>
+      <line x1="217.7" y1="60" x2="217.7" y2="540" stroke="#EF9F27" stroke-width="0.7" stroke-dasharray="4 3"/>
+      <line x1="293.1" y1="60" x2="293.1" y2="540" stroke="#E24B4A" stroke-width="0.7" stroke-dasharray="4 3"/>
+      <line x1="75" y1="222.7" x2="640" y2="222.7" stroke="#534AB7" stroke-width="0.9" stroke-dasharray="6 3"/>
+      <line x1="75" y1="491.0" x2="640" y2="491.0" stroke="#888780" stroke-width="0.7" stroke-dasharray="4 3"/>
+      <line x1="75" y1="448.8" x2="640" y2="448.8" stroke="#EF9F27" stroke-width="0.7" stroke-dasharray="4 3"/>
+      <line x1="75" y1="376.6" x2="640" y2="376.6" stroke="#E24B4A" stroke-width="0.7" stroke-dasharray="4 3"/>
+      <text x="132.6" y="74" font-size="11" fill="#444441" text-anchor="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">PD 1.6</text>
+      <text x="217.7" y="74" font-size="11" fill="#854F0B" text-anchor="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">PD 3.2</text>
+      <text x="293.1" y="74" font-size="11" fill="#A32D2D" text-anchor="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">PD 5.92</text>
+      <text x="68" y="222.7" font-size="11" fill="#534AB7" text-anchor="end" dominant-baseline="middle" font-weight="500" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">21K</text>
+      <text x="68" y="491.0" font-size="11" fill="#444441" text-anchor="end" dominant-baseline="middle" font-weight="500" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">1.6K</text>
+      <text x="68" y="448.8" font-size="11" fill="#854F0B" text-anchor="end" dominant-baseline="middle" font-weight="500" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">2.4K</text>
+      <text x="68" y="376.6" font-size="11" fill="#A32D2D" text-anchor="end" dominant-baseline="middle" font-weight="500" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">4.8K</text>
+      <text x="68" y="540" font-size="11" fill="#5F5E5A" text-anchor="end" dominant-baseline="middle">1K</text>
+      <text x="68" y="467.8" font-size="11" fill="#5F5E5A" text-anchor="end" dominant-baseline="middle">2K</text>
+      <text x="68" y="395.5" font-size="11" fill="#5F5E5A" text-anchor="end" dominant-baseline="middle">4K</text>
+      <text x="68" y="323.3" font-size="11" fill="#5F5E5A" text-anchor="end" dominant-baseline="middle">8K</text>
+      <text x="68" y="251.0" font-size="11" fill="#5F5E5A" text-anchor="end" dominant-baseline="middle">16K</text>
+      <text x="68" y="178.8" font-size="11" fill="#5F5E5A" text-anchor="end" dominant-baseline="middle">32K</text>
+      <text x="68" y="106.6" font-size="11" fill="#5F5E5A" text-anchor="end" dominant-baseline="middle">64K</text>
+      <text x="68" y="60" font-size="11" fill="#5F5E5A" text-anchor="end" dominant-baseline="middle">100K</text>
+      <text x="75" y="556" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="middle">1</text>
+      <text x="160" y="556" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="middle">2</text>
+      <text x="245" y="556" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="middle">4</text>
+      <text x="330" y="556" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="middle">8</text>
+      <text x="415" y="556" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="middle">16</text>
+      <text x="500" y="556" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="middle">32</text>
+      <text x="585" y="556" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="middle">64</text>
+      <text x="640" y="556" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="middle">100</text>
+      <rect x="75" y="60" width="565" height="480" fill="none" stroke="#888780" stroke-width="0.5"/>
+      <text x="430" y="80" font-size="12" font-weight="500" fill="#791F1F" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">推定拒绝区</text>
+      <text x="430" y="96" font-size="11" fill="#791F1F" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">TPP≥21000，或 总DRAM带宽≥6500GB/s</text>
+      <text x="180" y="260" font-size="12" font-weight="500" fill="#A32D2D" text-anchor="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">可逐案审查区</text>
+      <text x="180" y="276" font-size="11" fill="#791F1F" text-anchor="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">TPP&lt;21000 且 总DRAM带宽&lt;6500GB/s</text>
+      <text x="225" y="393" font-size="12" font-weight="500" fill="#854F0B" text-anchor="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">3A090.b 管控区</text>
+      <text x="225" y="409" font-size="11" fill="#633806" text-anchor="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">TPP 1600–4800 且 PD 1.6–5.92</text>
+      <text x="103" y="516" font-size="11" fill="#888780" text-anchor="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">3A090 参数范围外</text>
+      <circle cx="595.9" cy="113.3" r="8" fill="none" stroke="#A32D2D" stroke-width="0.7" stroke-dasharray="3 2"/>
+      <g>
+        <circle data-idx="0" cx="595.9" cy="113.3" r="4.5" fill="#639922" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="595.9" y1="113.3" x2="590" y2="90" stroke="#999" stroke-width="0.5"/>
+        <text x="585" y="80" font-size="11" fill="#27500A" text-anchor="middle" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">B300</text>
+      </g>
+      <g>
+        <circle data-idx="1" cx="571.1" cy="129.8" r="4.5" fill="#A32D2D" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="571.1" y1="129.8" x2="596" y2="130" stroke="#999" stroke-width="0.5"/>
+        <text x="600" y="130" font-size="11" fill="#791F1F" text-anchor="start" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">昇腾970（规划）</text>
+      </g>
+      <circle cx="554.9" cy="155.5" r="8" fill="none" stroke="#A32D2D" stroke-width="0.7" stroke-dasharray="3 2"/>
+      <g>
+        <circle data-idx="2" cx="554.9" cy="155.5" r="4.5" fill="#378ADD" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="554.9" y1="155.5" x2="594" y2="156" stroke="#999" stroke-width="0.5"/>
+        <text x="600" y="156" font-size="11" fill="#0C447C" text-anchor="start" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">MI355X</text>
+      </g>
+      <circle cx="533.5" cy="166.6" r="8" fill="none" stroke="#A32D2D" stroke-width="0.7" stroke-dasharray="3 2"/>
+      <g>
+        <circle data-idx="3" cx="533.5" cy="166.6" r="4.5" fill="#639922" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="533.5" y1="166.6" x2="526" y2="184" stroke="#999" stroke-width="0.5"/>
+        <text x="524" y="190" font-size="11" fill="#27500A" text-anchor="start" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">B200</text>
+      </g>
+      <circle cx="502.5" cy="192.7" r="8" fill="none" stroke="#A32D2D" stroke-width="0.7" stroke-dasharray="3 2"/>
+      <g>
+        <circle data-idx="4" cx="502.5" cy="192.7" r="4.5" fill="#639922" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="502.5" y1="192.7" x2="496" y2="202" stroke="#999" stroke-width="0.5"/>
+        <text x="490" y="206" font-size="11" fill="#27500A" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">B100</text>
+      </g>
+      <g>
+        <circle data-idx="5" cx="497" cy="206" r="4.5" fill="#A32D2D" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="497" y1="206" x2="507" y2="213" stroke="#999" stroke-width="0.5"/>
+        <text x="512" y="218" font-size="11" fill="#791F1F" text-anchor="start" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">昇腾960（规划）</text>
+      </g>
+      <g>
+        <circle data-idx="6" cx="454.7" cy="223.4" r="4.5" fill="#378ADD" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="454.7" y1="223.4" x2="445" y2="221" stroke="#999" stroke-width="0.5"/>
+        <text x="440" y="220" font-size="11" fill="#0C447C" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">MI300X</text>
+      </g>
+      <g>
+        <circle data-idx="19" cx="442" cy="232" r="4.5" fill="#378ADD" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="442" y1="232" x2="443" y2="238" stroke="#999" stroke-width="0.5"/>
+        <text x="440" y="240" font-size="11" fill="#0C447C" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">MI325X</text>
+      </g>
+      <g>
+        <circle data-idx="7" cx="481.2" cy="232.1" r="4.5" fill="#534AB7" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="481.2" y1="232.1" x2="490" y2="240" stroke="#999" stroke-width="0.5"/>
+        <text x="495" y="244" font-size="11" fill="#3C3489" text-anchor="start" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">思元690</text>
+      </g>
+      <g>
+        <circle data-idx="8" cx="438.8" cy="252" r="4.5" fill="#639922" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="438.8" y1="252" x2="432" y2="262" stroke="#999" stroke-width="0.5"/>
+        <text x="428" y="266" font-size="11" fill="#27500A" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">H100/H200</text>
+      </g>
+      <g>
+        <circle data-idx="9" cx="459.2" cy="251" r="4.5" fill="#D85A30" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="459.2" y1="251" x2="466" y2="262" stroke="#999" stroke-width="0.5"/>
+        <text x="470" y="268" font-size="11" fill="#712B13" text-anchor="start" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">MTT S5000</text>
+      </g>
+      <g>
+        <circle data-idx="10" cx="441" cy="264" r="4.5" fill="#1D9E75" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="441" y1="264" x2="435" y2="278" stroke="#999" stroke-width="0.5"/>
+        <text x="433" y="282" font-size="11" fill="#085041" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">BR200（规划）</text>
+      </g>
+      <g>
+        <circle data-idx="11" cx="428" cy="278" r="4.5" fill="#A32D2D" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="428" y1="278" x2="419" y2="296" stroke="#999" stroke-width="0.5"/>
+        <text x="415" y="300" font-size="11" fill="#791F1F" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">昇腾950PR/DT（规划）</text>
+      </g>
+      <g>
+        <circle data-idx="12" cx="352.7" cy="274.3" r="4.5" fill="#A32D2D" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="352.7" y1="274.3" x2="343" y2="277" stroke="#999" stroke-width="0.5"/>
+        <text x="338" y="278" font-size="11" fill="#791F1F" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">昇腾910C</text>
+      </g>
+      <g>
+        <circle data-idx="13" cx="403.9" cy="320.9" r="4.5" fill="#534AB7" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="403.9" y1="320.9" x2="412" y2="322" stroke="#999" stroke-width="0.5"/>
+        <text x="416" y="323" font-size="11" fill="#3C3489" text-anchor="start" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">思元590</text>
+      </g>
+      <g>
+        <circle data-idx="14" cx="324.4" cy="320.9" r="4.5" fill="#1D9E75" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="324.4" y1="320.9" x2="317" y2="319" stroke="#999" stroke-width="0.5"/>
+        <text x="312" y="318" font-size="11" fill="#085041" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">BR100</text>
+      </g>
+      <g>
+        <circle data-idx="15" cx="325.3" cy="369.8" r="4.5" fill="#A32D2D" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="325.3" y1="369.8" x2="333" y2="371" stroke="#999" stroke-width="0.5"/>
+        <text x="338" y="372" font-size="11" fill="#791F1F" text-anchor="start" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">昇腾910B</text>
+      </g>
+      <g>
+        <circle data-idx="16" cx="295.6" cy="372.5" r="4" fill="#fff" stroke="#888780" stroke-width="1.5" stroke-dasharray="2 1.5" class="chip"/>
+        <line x1="295.6" y1="372.5" x2="288" y2="370" stroke="#999" stroke-width="0.5"/>
+        <text x="283" y="368" font-size="11" fill="#444441" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">A100</text>
+      </g>
+      <g>
+        <circle data-idx="17" cx="291.7" cy="465.4" r="4.5" fill="#D85A30" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="291.7" y1="465.4" x2="282" y2="468" stroke="#999" stroke-width="0.5"/>
+        <text x="278" y="470" font-size="11" fill="#712B13" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">MTT S4000</text>
+      </g>
+      <g>
+        <circle data-idx="18" cx="255" cy="438.7" r="4" fill="#fff" stroke="#888780" stroke-width="1.5" stroke-dasharray="2 1.5" class="chip"/>
+        <line x1="255" y1="438.7" x2="246" y2="442" stroke="#999" stroke-width="0.5"/>
+        <text x="242" y="444" font-size="11" fill="#444441" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">RTX4090</text>
+      </g>
+      <g>
+        <circle data-idx="20" cx="206" cy="450" r="4.5" fill="#639922" stroke="#fff" stroke-width="1.5" class="chip"/>
+        <line x1="206" y1="450" x2="197" y2="456" stroke="#999" stroke-width="0.5"/>
+        <text x="192" y="462" font-size="11" fill="#27500A" text-anchor="end" dominant-baseline="middle" style="paint-order:stroke;stroke:#ffffff;stroke-width:2.5px">H20（对华特供）</text>
+      </g>
+      <text x="357" y="568" font-size="12" fill="#2C2C2A" text-anchor="middle" data-tip="PD：Performance Density（性能密度）= TPP ÷ 芯片面积（mm²）。BIS 于 2023 年 10 月引入，用于封堵「多颗小芯片拼出大算力」的规避手法，算力密度越高越容易被管控。">算力密度 PD（TPP ÷ 芯片面积，TOPS/mm²）· 对数刻度</text>
+      <rect x="40" y="588" width="16" height="12" fill="#F7C1C1" stroke="#E24B4A" stroke-width="0.5"/>
+      <text x="62" y="594" font-size="11" fill="#2C2C2A" dominant-baseline="middle">推定拒绝</text>
+      <rect x="150" y="588" width="16" height="12" fill="#FCEBEB" stroke="#E24B4A" stroke-width="0.5"/>
+      <text x="172" y="594" font-size="11" fill="#2C2C2A" dominant-baseline="middle">逐案审查</text>
+      <rect x="260" y="588" width="16" height="12" fill="#FAEEDA" stroke="#BA7517" stroke-width="0.5"/>
+      <text x="282" y="594" font-size="11" fill="#2C2C2A" dominant-baseline="middle">3A090.b</text>
+      <rect x="350" y="588" width="16" height="12" fill="#FBFBF9" stroke="#B4B2A9" stroke-width="0.5"/>
+      <text x="372" y="594" font-size="11" fill="#2C2C2A" dominant-baseline="middle">范围外</text>
+      <circle cx="440" cy="594" r="4.5" fill="none" stroke="#A32D2D" stroke-width="0.7" stroke-dasharray="3 2"/>
+      <text x="450" y="594" font-size="11" fill="#2C2C2A" dominant-baseline="middle">推定拒绝（美系）</text>
+      <circle cx="44" cy="620" r="4.5" fill="#639922" stroke="#fff" stroke-width="1.5"/>
+      <text x="54" y="620" font-size="11" fill="#2C2C2A" dominant-baseline="middle">NVIDIA</text>
+      <circle cx="124" cy="620" r="4.5" fill="#378ADD" stroke="#fff" stroke-width="1.5"/>
+      <text x="134" y="620" font-size="11" fill="#2C2C2A" dominant-baseline="middle">AMD</text>
+      <circle cx="194" cy="620" r="4.5" fill="#A32D2D" stroke="#fff" stroke-width="1.5"/>
+      <text x="204" y="620" font-size="11" fill="#2C2C2A" dominant-baseline="middle">华为昇腾</text>
+      <circle cx="274" cy="620" r="4.5" fill="#534AB7" stroke="#fff" stroke-width="1.5"/>
+      <text x="284" y="620" font-size="11" fill="#2C2C2A" dominant-baseline="middle">寒武纪</text>
+      <circle cx="344" cy="620" r="4.5" fill="#1D9E75" stroke="#fff" stroke-width="1.5"/>
+      <text x="354" y="620" font-size="11" fill="#2C2C2A" dominant-baseline="middle">壁仞</text>
+      <circle cx="414" cy="620" r="4.5" fill="#D85A30" stroke="#fff" stroke-width="1.5"/>
+      <text x="424" y="620" font-size="11" fill="#2C2C2A" dominant-baseline="middle">摩尔线程</text>
+      <circle cx="500" cy="620" r="4" fill="#fff" stroke="#888780" stroke-width="1.5" stroke-dasharray="2 1.5"/>
+      <text x="510" y="620" font-size="11" fill="#2C2C2A" dominant-baseline="middle">参考/特供点</text>
+    </svg>
+    <div id="tip" class="tip">
+      <div class="tip-name"></div>
+      <div class="tip-vendor"></div>
+      <span class="tip-badge"></span>
+      <div class="tip-policy"></div>
+      <table class="tip-tab"></table>
+    </div>
+  </div>
+  <div class="note">
+    <b>口径：</b>TPP = INT8 稠密算力 × 8 位（稠密值）；PD = TPP ÷ 芯片面积（mm²）；两轴均为对数刻度。<br>
+    <b>政策归属（重要）：</b>「对华禁运 / 推定拒绝 / 逐案审查」仅针对<b>美国及受 EAR 管辖的芯片</b>（NVIDIA、AMD 等）。中国自研芯片（华为 / 寒武纪 / 壁仞 / 摩尔线程）不适用美国出口许可，图中其落点表示「性能参数落入 3A090 管制基准」（美方评估其性能等级的参照，也受美国供应链 / EDA / 设备等限制）。<br>
+    <b>2026-01-15 新政（FR 2026-00789 / 91 FR 1684）：</b>3A090.a 中 <b>TPP&lt;21,000 且 总DRAM带宽&lt;6,500GB/s</b> 的美系芯片（H200、MI325X 等）从美国<b>直接出口</b>至中国/澳门改按<b>逐案审查</b>（紫线以下）；<b>TPP≥21,000 或 带宽≥6,500GB/s</b>（如 Blackwell B 系）以及<b>再出口/转口</b>仍为<b>推定拒绝</b>（紫线以上，红圈标注）。<br>
+    <b>注：</b>H20（TPP≈2368 / PD≈2.91）为 NVIDIA 专为中国压降算力版本，落在 3A090 参数范围外、可对华销售；MI325X 与 MI300X 同算力（TPP≈20,856），为逐案审查规则点名型号。标注「规划」的芯片参数为官方路线图/估算。实际以 BIS 认定为准。
+  </div>
+</div>
+<script>
+var CHIPS = [
+  {name:"NVIDIA B300 Ultra", vendor:"NVIDIA · Blackwell Ultra", color:"#639922", policy:"denial", rows:[["制程 / 晶体管","TSMC 4NP · 208B"],["INT8 稠密","≈7500 TOPS"],["FP8 / FP4（稠密）","≈7.5P / 15P"],["显存","HBM3e 288GB · 8TB/s"],["互联 / 功耗","NVLink5 1.8TB/s · 1400W"],["TPP / PD","≈60000 / 69.8"]]},
+  {name:"华为昇腾 970", vendor:"华为 · 昇腾（规划 2028Q4）", color:"#A32D2D", policy:"cna", rows:[["FP8 / FP4","4P / 8P"],["INT8（估算）","≈6400 TOPS"],["显存","HBM 288GB · 14.4TB/s"],["互联带宽","4TB/s"],["TPP / PD","≈51200 / ≈57（估）"]]},
+  {name:"AMD MI355X", vendor:"AMD · CDNA 4", color:"#378ADD", policy:"denial", rows:[["INT8 稠密","≈5000 TOPS"],["FP8（稠密）","≈5P"],["显存","HBM3e 288GB · 8TB/s"],["互联 / 功耗","Infinity Fabric · 1400W"],["TPP / PD","≈40000 / ≈50"]]},
+  {name:"NVIDIA B200 SXM", vendor:"NVIDIA · Blackwell", color:"#639922", policy:"denial", rows:[["制程 / 封装","TSMC 4NP · 双die ≈858mm²"],["INT8 稠密","4500 TOPS"],["FP8 / FP4（稠密）","4.5P / 9P"],["显存","HBM3e 192GB · 8TB/s"],["互联 / 功耗","NVLink5 1.8TB/s · 1000W"],["TPP / PD","36000 / 42.0"]]},
+  {name:"NVIDIA B100 SXM", vendor:"NVIDIA · Blackwell", color:"#639922", policy:"denial", rows:[["制程 / 封装","TSMC 4NP · 双die ≈858mm²"],["INT8 稠密","3500 TOPS"],["FP8（稠密）","3.5P"],["显存","HBM3e 192GB · 8TB/s"],["互联 / 功耗","NVLink5 1.8TB/s · 700W"],["TPP / PD","28000 / 32.6"]]},
+  {name:"华为昇腾 960", vendor:"华为 · 昇腾（规划 2027Q4）", color:"#A32D2D", policy:"cna", rows:[["FP8 / FP4","2P / 4P"],["INT8（估算）","≈3200 TOPS"],["显存","HBM 288GB · 9.6TB/s"],["互联带宽","2.2TB/s"],["TPP / PD","≈25600 / ≈32（估）"]]},
+  {name:"AMD MI300X", vendor:"AMD · CDNA 3", color:"#378ADD", policy:"casebycase", rows:[["制程 / 封装","TSMC 5/6nm · 8 XCD + 4 IOD"],["INT8 稠密","≈2607 TOPS"],["FP8（稠密）","≈2607 TFLOPS"],["显存","HBM3 192GB · 5.2TB/s"],["互联 / 功耗","Infinity Fabric 896GB/s · 750W"],["TPP / PD","≈20856 / 22.1（恰好低于 21K 上限）"]]},
+  {name:"寒武纪 思元690", vendor:"寒武纪 · 思元系列（2026 量产）", color:"#534AB7", policy:"cna", rows:[["INT8 稠密","≈2400 TOPS"],["FP16",">700 TFLOPS（报道）"],["显存","HBM3 196GB · ≈3.35TB/s"],["封装","7nm Chiplet 双die"],["TPP / PD","≈19200 / ≈27.4（估）"]]},
+  {name:"NVIDIA H100 / H200", vendor:"NVIDIA · Hopper", color:"#639922", policy:"casebycase", rows:[["INT8 稠密（含稀疏）","1979（3958）TOPS"],["FP16（稠密）","989 TFLOPS"],["die 面积","814mm² · TSMC 4N"],["互联 / 功耗","NVLink4 900GB/s · 700W"],["— H100 显存","HBM3 80GB · 3.35TB/s"],["— H200 显存","HBM3e 141GB · 4.8TB/s"],["TPP / PD","15832 / 19.4"]]},
+  {name:"摩尔线程 MTT S5000", vendor:"摩尔线程 · MUSA", color:"#D85A30", policy:"cna", rows:[["INT8 稠密","2000 TOPS"],["FP8 / FP16","1000 / 500 TFLOPS"],["显存","80GB GDDR6 · 1.6TB/s"],["互联","MTLink 多卡互联"],["TPP / PD","16000 / ≈22.9（估）"]]},
+  {name:"壁仞 BR200", vendor:"壁仞科技（规划 2026 底量产）", color:"#1D9E75", policy:"cna", rows:[["INT8（估算）","≈2000 TOPS"],["FP8","≈2P"],["架构","Chiplet"],["TPP / PD","16000 / ≈20（估）"]]},
+  {name:"华为昇腾 950PR / 950DT", vendor:"华为 · 昇腾（规划 2026）", color:"#A32D2D", policy:"cna", rows:[["FP8 / FP4","1P / 2P"],["INT8（估算）","≈1600 TOPS"],["架构","SIMD/SIMT · 自研HBM"],["— 950PR 显存","HiBL 1.0 · 144GB · 4TB/s（2026Q1）"],["— 950DT 显存","HiZQ 2.0 · 128GB · 1.6TB/s（2026Q4）"],["TPP / PD","≈12800 / ≈18.3（估）"]]},
+  {name:"华为昇腾 910C", vendor:"华为 · 昇腾", color:"#A32D2D", policy:"cna", rows:[["FP16 / INT8","800 TFLOPS / ≈1600 TOPS"],["封装","双die · SMIC N+2 · ≈1331mm²"],["显存","HBM 128GB · 3.2TB/s"],["互联 / 功耗","HCCS 784GB/s · 350W"],["TPP / PD","12800 / 9.6"]]},
+  {name:"寒武纪 思元590", vendor:"寒武纪 · 思元系列", color:"#534AB7", policy:"cna", rows:[["INT8 稠密","1024 TOPS"],["FP16","≈345-384 TFLOPS"],["显存","HBM2e/HBM3 64GB · ≈1.8TB/s"],["TPP / PD","8192 / ≈14.6（估）"]]},
+  {name:"壁仞 BR100", vendor:"壁仞科技", color:"#1D9E75", policy:"cna", rows:[["INT8 稠密（含稀疏）","1024（2048）TOPS"],["FP16","512 TFLOPS"],["die 面积","1074mm² · 7nm"],["显存","HBM2e 64GB · 1.3-1.6TB/s"],["互联 / 功耗","BR-Link · 400W"],["TPP / PD","8192 / 7.63"]]},
+  {name:"华为昇腾 910B", vendor:"华为 · 昇腾", color:"#A32D2D", policy:"cna", rows:[["FP16 / INT8","320 TFLOPS / 640 TOPS"],["die 面积","21.32×31.22mm ≈665.6mm²"],["显存","HBM2e 64GB · 400GB/s（B3: HBM3 1.2TB/s）"],["互联 / 功耗","HCCS 400GB/s · 320W"],["TPP / PD","5120 / 7.69（紧贴红线）"]]},
+  {name:"NVIDIA A100 80GB（参考）", vendor:"NVIDIA · Ampere", color:"#5F5E5A", policy:"casebycase", rows:[["INT8 稠密（含稀疏）","624（1248）TOPS"],["FP16","312 TFLOPS"],["die 面积","826mm² · TSMC 7nm"],["显存","HBM2e 80GB · 2.0TB/s"],["互联 / 功耗","NVLink3 600GB/s · 400W"],["TPP / PD","4992 / 6.04（a区边缘）"]]},
+  {name:"摩尔线程 MTT S4000", vendor:"摩尔线程 · MUSA", color:"#D85A30", policy:"cnb", rows:[["INT8 稠密","256 TOPS"],["FP16","128 TFLOPS"],["显存","GDDR6 48GB · 768GB/s"],["接口","PCIe 5.0"],["TPP / PD","2048 / 5.85（落入 b 区）"]]},
+  {name:"NVIDIA RTX 4090（参考）", vendor:"NVIDIA · Ada Lovelace（消费级）", color:"#5F5E5A", policy:"usb", rows:[["INT8 稠密（含稀疏）","330（660）TOPS"],["FP16","165 TFLOPS"],["die 面积","AD102 · 608.5mm²"],["显存","GDDR6X 24GB · 1.0TB/s"],["功耗","450W"],["TPP / PD","2642 / 4.34（b 区，稠密口径）"]]},
+  {name:"AMD MI325X", vendor:"AMD · CDNA 3（逐案审查点名型号）", color:"#378ADD", policy:"casebycase", rows:[["INT8 稠密","≈2607 TOPS"],["FP8（稠密）","≈2607 TFLOPS"],["显存","HBM3e 256GB · 6.0TB/s"],["互联 / 功耗","Infinity Fabric · 1000W"],["TPP / PD","≈20856 / 22.1（低于 21K，DRAM 6.0TB/s&lt;6.5）"]]},
+  {name:"NVIDIA H20（对华特供）", vendor:"NVIDIA · Hopper（中国特供版）", color:"#5F5E5A", policy:"h20", rows:[["INT8 稠密","296 TOPS（刻意压降）"],["FP16","148 TFLOPS"],["显存","HBM3 96GB · 4.0TB/s"],["die 面积","814mm²（同 H100，SM 被禁用）"],["互联 / 功耗","NVLink4 900GB/s · 400W"],["TPP / PD","2368 / 2.91（3A090 范围外）"]]}
+];
+var BADGE_TEXT = { denial:"3A090.a · 对华推定拒绝", casebycase:"3A090.a · 对华逐案审查", usb:"3A090.b · 对华受限", h20:"3A090 参数范围外", cna:"参数落入 3A090.a 范围", cnb:"参数落入 3A090.b 范围" };
+var BADGE_CLS = { denial:"badge-a", casebycase:"badge-case", usb:"badge-b", h20:"badge-ok", cna:"badge-cn", cnb:"badge-cn" };
+var POLICY_TEXT = {
+  denial:"对华出口：推定拒绝（TPP≥21000 或 总DRAM带宽≥6500GB/s；再出口/转口同样拒绝）",
+  casebycase:"对华出口：由推定拒绝改为逐案审查（TPP<21000 且 总DRAM带宽<6500GB/s，仅限从美直接出口，需美方测试/认证等条件）",
+  usb:"对华出口：受限（3A090.b，需许可证）",
+  h20:"对华销售：不受 3A090 限制（算力被刻意压降以符合规则，曾一度面临禁售争议）",
+  cna:"中国自研芯片：不适用美国出口许可；参数落入 3A090.a 管制基准（受美国供应链 / EDA / 设备等限制）",
+  cnb:"中国自研芯片：不适用美国出口许可；参数落入 3A090.b 管制基准"
+};
+var tip = document.getElementById("tip");
+function place(ev){
+  var cw = document.querySelector(".chartwrap").getBoundingClientRect();
+  var tw = 310, th = 340;
+  var x = ev.clientX - cw.left + 14, y = ev.clientY - cw.top - 10;
+  if (x + tw > cw.width - 8) x = ev.clientX - cw.left - tw - 14;
+  if (y + th > cw.height - 8) y = ev.clientY - cw.top - th - 10;
+  if (y < 8) y = 8;
+  tip.style.left = x + "px"; tip.style.top = y + "px";
+}
+function showTip(d, ev){
+  tip.querySelector(".tip-name").textContent = d.name;
+  tip.querySelector(".tip-vendor").textContent = d.vendor;
+  var b = tip.querySelector(".tip-badge"); b.textContent = BADGE_TEXT[d.policy]; b.className = "tip-badge " + BADGE_CLS[d.policy];
+  tip.querySelector(".tip-policy").textContent = POLICY_TEXT[d.policy];
+  var tb = tip.querySelector(".tip-tab"); tb.innerHTML = "";
+  d.rows.forEach(function(r){ var tr = document.createElement("tr"); var td1 = document.createElement("td"); td1.className = "k"; td1.textContent = r[0]; var td2 = document.createElement("td"); td2.className = "v"; td2.textContent = r[1]; tr.appendChild(td1); tr.appendChild(td2); tb.appendChild(tr); });
+  tip.style.display = "block"; place(ev);
+}
+document.querySelectorAll(".chip").forEach(function(c){
+  var d = CHIPS[+c.getAttribute("data-idx")];
+  var orig = +c.getAttribute("r");
+  c.addEventListener("mouseenter", function(e){ c.setAttribute("r", orig + 2.5); c.setAttribute("stroke", "#111"); c.setAttribute("stroke-width", "2"); showTip(d, e); });
+  c.addEventListener("mousemove", function(e){ place(e); });
+  c.addEventListener("mouseleave", function(){ c.setAttribute("r", orig); c.setAttribute("stroke", "#fff"); c.setAttribute("stroke-width", "1.5"); tip.style.display = "none"; });
+});
+document.querySelectorAll("[data-tip]").forEach(function(el){
+  el.addEventListener("mouseenter", function(e){ tip.querySelector(".tip-name").textContent = ""; tip.querySelector(".tip-vendor").textContent = ""; var b = tip.querySelector(".tip-badge"); b.textContent = ""; b.className = "tip-badge"; tip.querySelector(".tip-policy").textContent = ""; var tb = tip.querySelector(".tip-tab"); tb.innerHTML = ""; var tr = document.createElement("tr"); var td = document.createElement("td"); td.className = "v"; td.textContent = el.getAttribute("data-tip"); tr.appendChild(td); tb.appendChild(tr); tip.style.display = "block"; place(e); });
+  el.addEventListener("mousemove", place);
+  el.addEventListener("mouseleave", function(){ tip.style.display = "none"; });
+});
+</script>
+</body>
+</html>
