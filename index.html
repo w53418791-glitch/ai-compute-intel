@@ -49,7 +49,7 @@
 <div class="wrap">
 <header>
   <h1>AI 算力情报站</h1>
-  <p>美国 EAR 3A090 芯片管制 · 前沿大模型跑分 · 超节点系统对比 — 数据核实至 2026-08（多源交叉，估算项已标注）</p>
+  <p>美国 EAR 3A090 芯片管制 · 前沿大模型跑分 · 超节点系统对比 — 数据核实至 2026-10（多源交叉，估算项已标注）</p>
   <nav>
     <button class="on" data-tab="t1">芯片管制分布图</button>
     <button data-tab="t2">大模型跑分榜</button>
@@ -166,8 +166,8 @@
 
 <section id="t2">
   <div class="card">
-    <h2>前沿大模型跑分榜 <span class="tag">数据核实至 2026-08</span></h2>
-    <div class="sub"><b>主榜 · Artificial Analysis 智能指数（AA Intelligence Index，0–100）</b>——由 Artificial Analysis 对 <b>MMLU-Pro（知识）、GPQA（科学推理）、AIME（数学）、SWE-bench（代码）、智能体等 10 项独立标准化评测加权综合</b>，是目前公认最权威的模型客观综合能力排名。分数越高整体越强；同一模型不同 effort 档分数不同。数据更新 2026-08-18（v4.1 口径）。</div>
+    <h2>前沿大模型跑分榜 <span class="tag">数据核实至 2026-10</span></h2>
+    <div class="sub"><b>主榜 · Artificial Analysis 智能指数（AA Intelligence Index，0–100）</b>——由 Artificial Analysis 对 <b>MMLU-Pro（知识）、GPQA（科学推理）、AIME（数学）、SWE-bench（代码）、Terminal-Bench、智能体等 9–10 项独立标准化评测加权综合</b>，是目前公认最权威的模型客观综合能力排名。分数越高整体越强；同一模型不同 effort 档分数不同。数据更新 2026-10（v4.3.2 口径）。</div>
     <svg viewBox="0 0 680 470" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
       <text x="40" y="26" font-size="14" font-weight="500" fill="#2C2C2A">AA 智能指数 · 主榜（0–100，越高越强）</text>
       <line x1="120" y1="50" x2="120" y2="430" stroke="#888780" stroke-width="0.5"/>
@@ -182,17 +182,17 @@
       <line x1="120" y1="190" x2="640" y2="190" stroke="#E7E6E2" stroke-width="0.5"/>
       <line x1="120" y1="70" x2="640" y2="70" stroke="#E7E6E2" stroke-width="0.5"/>
       <g font-size="11" font-weight="500">
-        <rect x="120" y="52" width="520" height="30" rx="4" fill="#EEEDFE"/><text x="126" y="71" fill="#26215C">Claude Opus 5 (max) · 63</text>
-        <rect x="120" y="86" width="512" height="30" rx="4" fill="#EEEDFE"/><text x="126" y="105" fill="#26215C">Claude Fable 5 / Mythos 5 · 62</text>
-        <rect x="120" y="120" width="504" height="30" rx="4" fill="#EEEDFE"/><text x="126" y="139" fill="#26215C">GPT-5.6 Sol (max) · 61</text>
-        <rect x="120" y="154" width="504" height="30" rx="4" fill="#EEEDFE"/><text x="126" y="173" fill="#26215C">Grok 4.6 (high) · 61</text>
-        <rect x="120" y="188" width="496" height="30" rx="4" fill="#C0DD97"/><text x="126" y="207" fill="#173404">Kimi K3 (max) · 60  ← 开源第一</text>
-        <rect x="120" y="222" width="479" height="30" rx="4" fill="#B5D4F4"/><text x="126" y="241" fill="#042C53">Qwen3.8-Max · 58</text>
-        <rect x="120" y="256" width="463" height="30" rx="4" fill="#F1EFE8"/><text x="126" y="275" fill="#2C2C2A">Claude Opus 4.8 · 56</text>
-        <rect x="120" y="290" width="438" height="30" rx="4" fill="#C0DD97"/><text x="126" y="309" fill="#173404">GLM-5.2 (max) · 53 ← 智谱</text>
-        <rect x="120" y="324" width="429" height="30" rx="4" fill="#C0DD97"/><text x="126" y="343" fill="#173404">DeepSeek V4-Flash 0731 · 52</text>
-        <rect x="120" y="358" width="421" height="30" rx="4" fill="#B5D4F4"/><text x="126" y="377" fill="#042C53">GPT-5.6 Luna · 51 / Gemini 3.6 Flash · 52</text>
-        <rect x="120" y="392" width="421" height="30" rx="4" fill="#B5D4F4"/><text x="126" y="411" fill="#042C53">Gemini 3.1 Pro · ≈51</text>
+        <rect x="120" y="52" width="478" height="30" rx="4" fill="#EEEDFE"/><text x="126" y="71" fill="#26215C">Claude Opus 5.5 (max) · 58</text>
+        <rect x="120" y="86" width="462" height="30" rx="4" fill="#EEEDFE"/><text x="126" y="105" fill="#26215C">Claude Sonnet 5.5 · 56</text>
+        <rect x="120" y="120" width="441" height="30" rx="4" fill="#EEEDFE"/><text x="126" y="139" fill="#26215C">Claude Fable 5.1 · 53.4</text>
+        <rect x="120" y="154" width="437" height="30" rx="4" fill="#B5D4F4"/><text x="126" y="173" fill="#042C53">GPT-6 Astra (OpenAI) · 53</text>
+        <rect x="120" y="188" width="437" height="30" rx="4" fill="#B5D4F4"/><text x="126" y="207" fill="#042C53">Gemini 4 Argon (Google) · 53</text>
+        <rect x="120" y="222" width="380" height="30" rx="4" fill="#C0DD97"/><text x="126" y="241" fill="#173404">小米 MiMo-V2.6-Pro · 46  ← 开源第一</text>
+        <rect x="120" y="256" width="380" height="30" rx="4" fill="#B5D4F4"/><text x="126" y="275" fill="#2C2C2A">Grok 4.7 (xAI) · 46</text>
+        <rect x="120" y="290" width="371" height="30" rx="4" fill="#C0DD97"/><text x="126" y="309" fill="#173404">GLM-5.3 · 45 / Qwen3.8-Max · 45 ← 智谱/阿里</text>
+        <rect x="120" y="324" width="371" height="30" rx="4" fill="#C0DD97"/><text x="126" y="343" fill="#173404">DeepSeek V4.1 Flash-1017 · 45</text>
+        <rect x="120" y="358" width="363" height="30" rx="4" fill="#C0DD97"/><text x="126" y="377" fill="#173404">Kimi K3 (max) · 44</text>
+        <rect x="120" y="392" width="330" height="30" rx="4" fill="#C0DD97"/><text x="126" y="411" fill="#173404">Qwen3.8-Flash-Next · 40 / Meta Muse Spark Open · 39</text>
       </g>
     </svg>
     <div class="legend-row"><span class="li"><span class="dot" style="background:#EEEDFE"></span>Anthropic</span><span class="li"><span class="dot" style="background:#C0DD97"></span>开源/开放权重</span><span class="li"><span class="dot" style="background:#B5D4F4"></span>Google/OpenAI 等</span></div>
@@ -200,22 +200,24 @@
 
   <div class="card">
     <h2>参数量 + 分项跑分明细</h2>
-    <div class="sub">各列测什么：<b>LMArena Elo</b>＝全球用户匿名盲测 A/B 投票（主观口碑，越高越好）· <b>HLE（Humanity's Last Exam）</b>＝人类最后考试，专家级最难问答 · <b>SWE-bench Verified</b>＝真实 GitHub 代码修复 · <b>τ²-Bench</b>＝智能体长程任务。MoE 模型注明「总参数 / 激活参数」。</div>
+    <div class="sub">各列测什么：<b>LMArena Elo</b>＝全球用户匿名盲测 A/B 投票（主观口碑，越高越好）· <b>HLE（Humanity's Last Exam）</b>＝人类最后考试，专家级最难问答 · <b>SWE-bench / DeepSWE</b>＝真实代码修复/软件工程智能体 · <b>智能体榜</b>＝长程智能体任务。MoE 模型注明「总参数 / 激活参数」。10 月要点：Anthropic 包揽 AA 前三；<b>开源第一易主小米 MiMo-V2.6-Pro</b>，开源前六全部为中国模型；DeepSeek 将中美差距压缩至约 3%。</div>
     <div style="overflow-x:auto">
     <table>
       <tr><th>模型</th><th>厂商</th><th>总/激活参数</th><th>类型</th><th>AA 指数</th><th>LMArena</th><th>HLE</th><th>SWE-bench</th><th>τ²/GDPval</th></tr>
-      <tr><td><b>Claude Opus 5</b></td><td>Anthropic</td><td class="tbd">—</td><td><span class="badge b-close">闭源</span></td><td class="num"><b>63</b></td><td class="num">1493</td><td class="num">64.7</td><td class="num">96.0</td><td class="num tbd">—</td></tr>
-      <tr><td><b>Claude Fable 5</b> / Mythos 5</td><td>Anthropic</td><td class="tbd">—</td><td><span class="badge b-close">闭源</span></td><td class="num"><b>62</b></td><td class="num"><b>1506 #1</b></td><td class="num">59.0</td><td class="num">95.0</td><td class="num tbd">—</td></tr>
-      <tr><td><b>GPT-5.6 Sol</b></td><td>OpenAI</td><td class="num tbd">≈1.2T（估）</td><td><span class="badge b-close">闭源</span></td><td class="num"><b>61</b></td><td class="num tbd">≈1480（估）</td><td class="num tbd">≈57（估）</td><td class="num tbd">≈89（估）</td><td class="num tbd">—</td></tr>
-      <tr><td><b>Grok 4.6</b></td><td>xAI</td><td class="tbd">—</td><td><span class="badge b-close">闭源</span></td><td class="num"><b>61</b></td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num">GDPval 1753</td></tr>
-      <tr><td><b>Kimi K3</b></td><td>月之暗面</td><td class="num">2.8T / 104B</td><td><span class="badge b-open">开源</span></td><td class="num"><b>60</b></td><td class="num tbd">≈1475（估）</td><td class="num">56.0</td><td class="num tbd">≈85（估）</td><td class="num">GDPval 1687</td></tr>
-      <tr><td><b>Qwen3.8-Max</b></td><td>阿里巴巴</td><td class="tbd">—</td><td><span class="badge b-close">闭源</span></td><td class="num"><b>58</b></td><td class="num">1491</td><td class="num">56.2</td><td class="num tbd">—</td><td class="num tbd">—</td></tr>
-      <tr><td><b>Claude Opus 4.8</b></td><td>Anthropic</td><td class="tbd">—</td><td><span class="badge b-close">闭源</span></td><td class="num">56</td><td class="num tbd">—</td><td class="num">57.9</td><td class="num">88.6</td><td class="num tbd">—</td></tr>
-      <tr><td><b>GLM-5.3 / 5.2</b></td><td>智谱 AI</td><td class="num tbd">≈745B / ≈44B（估）</td><td><span class="badge b-open">开源</span></td><td class="num">53（5.2）</td><td class="num tbd">≈1465（估）</td><td class="num"><b>62.5（5.3）</b></td><td class="num tbd">≈80（估）</td><td class="num">89.7（GLM-5）</td></tr>
-      <tr><td><b>DeepSeek V4-Pro</b></td><td>深度求索</td><td class="num">1.6T / 49B</td><td><span class="badge b-open">开源 MIT</span></td><td class="num tbd">≈54（估）</td><td class="num tbd">≈1450（估）</td><td class="num">48.2</td><td class="num">80.6</td><td class="num tbd">—</td></tr>
-      <tr><td><b>DeepSeek V4-Flash</b></td><td>深度求索</td><td class="num">284B / 13B</td><td><span class="badge b-open">开源 MIT</span></td><td class="num">52</td><td class="num tbd">≈1440（估）</td><td class="num">45.1</td><td class="num">79.0</td><td class="num">TerminalB 82.7</td></tr>
-      <tr><td><b>Gemini 3.1 Pro</b></td><td>Google</td><td class="num tbd">≈1.0T（估）</td><td><span class="badge b-close">闭源</span></td><td class="num tbd">≈51</td><td class="num tbd">—</td><td class="num">51.4</td><td class="num">80.6</td><td class="num">τ² 90.8</td></tr>
-      <tr><td><b>GPT-5.6 Luna</b></td><td>OpenAI</td><td class="tbd">—</td><td><span class="badge b-close">闭源</span></td><td class="num">51–52</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td></tr>
+      <tr><td><b>Claude Opus 5.5</b></td><td>Anthropic</td><td class="tbd">—</td><td><span class="badge b-close">闭源</span></td><td class="num"><b>58</b></td><td class="num tbd">≈1500（估）</td><td class="num tbd">≈60（估）</td><td class="num tbd">≈96（估）</td><td class="num">工具幻觉率 0.37%（最低）</td></tr>
+      <tr><td><b>Claude Sonnet 5.5</b></td><td>Anthropic</td><td class="tbd">—</td><td><span class="badge b-close">闭源</span></td><td class="num"><b>56</b></td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td></tr>
+      <tr><td><b>Claude Fable 5.1</b> / Mythos 5.1</td><td>Anthropic</td><td class="tbd">—</td><td><span class="badge b-close">闭源</span></td><td class="num"><b>53.4</b></td><td class="num tbd">≈1500（估）</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td></tr>
+      <tr><td><b>GPT-6 Astra</b></td><td>OpenAI</td><td class="num tbd">≈1.2T（估）</td><td><span class="badge b-close">闭源</span></td><td class="num"><b>53</b></td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td></tr>
+      <tr><td><b>Gemini 4 Argon</b></td><td>Google</td><td class="num tbd">≈1.0T（估）</td><td><span class="badge b-close">闭源</span></td><td class="num"><b>53</b></td><td class="num"><b>1525 #1</b>（Text Arena）</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num">Vals Index #1</td></tr>
+      <tr><td><b>MiMo-V2.6-Pro</b></td><td>小米</td><td class="num">1T（总）</td><td><span class="badge b-open">开源</span></td><td class="num"><b>46</b></td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num">智能体榜 #18</td></tr>
+      <tr><td><b>Grok 4.7</b></td><td>xAI</td><td class="tbd">—</td><td><span class="badge b-close">闭源</span></td><td class="num"><b>46</b></td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td></tr>
+      <tr><td><b>GLM-5.3</b></td><td>智谱 AI</td><td class="num">≈753B</td><td><span class="badge b-open">开源 MIT</span></td><td class="num"><b>45</b></td><td class="num tbd">≈1465（估）</td><td class="num"><b>62.5</b>（国产第一）</td><td class="num tbd">≈80（估）</td><td class="num tbd">—</td></tr>
+      <tr><td><b>Qwen3.8-Max</b></td><td>阿里巴巴</td><td class="num">2.4T / 95B</td><td><span class="badge b-open">开源 Apache</span></td><td class="num"><b>45</b></td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num">智能体榜 #22</td></tr>
+      <tr><td><b>DeepSeek V4.1 Flash-1017</b></td><td>深度求索</td><td class="num">552B / 13B</td><td><span class="badge b-open">开源 MIT</span></td><td class="num"><b>45</b></td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num">DeepSWE 77（#6）</td><td class="num">$1.2/M 输出</td></tr>
+      <tr><td><b>Kimi K3</b></td><td>月之暗面</td><td class="num">2.8T / 104B</td><td><span class="badge b-open">开源</span></td><td class="num"><b>44</b></td><td class="num tbd">≈1475（估）</td><td class="num">56.0</td><td class="num tbd">≈85（估）</td><td class="num">智能体榜 #16</td></tr>
+      <tr><td><b>Qwen3.8-Flash-Next</b></td><td>阿里巴巴</td><td class="num">180B / 6B</td><td><span class="badge b-open">开源</span></td><td class="num">40</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td></tr>
+      <tr><td><b>Muse Spark Open</b></td><td>Meta</td><td class="num">816B / 42B</td><td><span class="badge b-open">开源</span></td><td class="num">39</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num">MCP-Atlas 89.2</td></tr>
+      <tr><td><b>Mistral Large 4</b></td><td>Mistral AI</td><td class="num">1.05T / 52B</td><td><span class="badge b-open">权重 10 月底</span></td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num">SciCode 91.8（开源SOTA）</td><td class="num">1M 上下文</td></tr>
     </table>
     </div>
     <div class="legend-row"><span class="li"><span class="dot" style="background:#CC785C"></span>Anthropic</span><span class="li"><span class="dot" style="background:#10A37F"></span>OpenAI</span><span class="li"><span class="dot" style="background:#4285F4"></span>Google</span><span class="li"><span class="dot" style="background:#8B5CF6"></span>xAI</span><span class="li"><span class="dot" style="background:#4D6BFE"></span>DeepSeek</span><span class="li"><span class="dot" style="background:#2563EB"></span>阿里</span><span class="li"><span class="dot" style="background:#0EA5A0"></span>月之暗面</span><span class="li"><span class="dot" style="background:#16A34A"></span>智谱</span></div>
@@ -231,12 +233,12 @@
     </svg>
     <div class="legend-row" id="radar2-legend"></div>
   </div>
-  <footer>主榜来源：Artificial Analysis（2026-08-18，v4.1 口径）；LMArena（2026-08-12）；DataLearnerAI 聚合（HLE/SWE-bench/τ²）。≈ 估算项已标注，— 为官方未公开。</footer>
+  <footer>主榜来源：Artificial Analysis（2026-10，v4.3.2 口径）；LMArena / LMSys Text Arena（2026-10）；llm-stats.com、各官方 model card（HLE/SWE-bench/智能体榜）。≈ 估算项已标注，— 为官方未公开。</footer>
 </section>
 
 <section id="t3">
   <div class="card">
-    <h2>超节点系统对比 · 算力 / 功耗 / 规模 <span class="tag">数据核实至 2026-08</span></h2>
+    <h2>超节点系统对比 · 算力 / 功耗 / 规模 <span class="tag">数据核实至 2026-10</span></h2>
     <div class="sub">气泡图：横轴 = 总算力（BF16 PFLOPS，对数），纵轴 = 系统功耗（kW，对数），气泡大小 = 并联卡数。能效（PF/kW）越高越靠右下。虚线气泡 = 估算/待核实项。</div>
     <svg viewBox="0 0 680 470" xmlns="http://www.w3.org/2000/svg" style="font-family:system-ui,sans-serif">
       <text x="40" y="26" font-size="14" font-weight="500" fill="#2C2C2A">算力–功耗气泡图（气泡大小 ∝ 卡数，对数轴）</text>
@@ -255,14 +257,14 @@
       <text x="85" y="60" font-size="10" fill="#5F5E5A" text-anchor="end">10k</text>
       <circle cx="227" cy="368" r="9.6" fill="#639922" fill-opacity="0.3" stroke="#3B6D11" stroke-width="1.5"/>
       <text x="227" y="392" font-size="11" fill="#27500A" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">GB200 NVL72 · 180PF/145kW</text>
-      <circle cx="299" cy="365" r="9.6" fill="#639922" fill-opacity="0.2" stroke="#3B6D11" stroke-width="1.3" stroke-dasharray="3 2"/>
-      <text x="299" y="412" font-size="11" fill="#5F5E5A" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">GB300 NVL72 · ≈350PF/≈145kW（估）</text>
+      <circle cx="299" cy="365" r="9.6" fill="#639922" fill-opacity="0.3" stroke="#3B6D11" stroke-width="1.5"/>
+      <text x="299" y="412" font-size="11" fill="#27500A" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">GB300 NVL72 · 360PF/135kW</text>
       <circle cx="282" cy="287" r="11.7" fill="#A32D2D" fill-opacity="0.3" stroke="#791F1F" stroke-width="1.5"/>
       <text x="282" y="262" font-size="11" fill="#791F1F" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">CloudMatrix 384 · ≈300PF/≈559kW</text>
-      <circle cx="337" cy="211" r="13" fill="#A32D2D" fill-opacity="0.25" stroke="#791F1F" stroke-width="1.5" stroke-dasharray="3 2"/>
-      <text x="410" y="180" font-size="11" fill="#791F1F" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">Atlas 950 单元 1024卡（估 ≈500PF/≈2MW）</text>
+      <circle cx="337" cy="211" r="13" fill="#A32D2D" fill-opacity="0.3" stroke="#791F1F" stroke-width="1.5"/>
+      <text x="410" y="180" font-size="11" fill="#791F1F" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">Atlas 950 单元 1024卡 · 500PF/≈1.6MW</text>
       <circle cx="561" cy="88" r="15.7" fill="#A32D2D" fill-opacity="0.2" stroke="#791F1F" stroke-width="1.3" stroke-dasharray="3 2"/>
-      <text x="430" y="70" font-size="11" fill="#791F1F" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">Atlas 950 满配 8192卡（估 ≈4EF/≈16MW）</text>
+      <text x="430" y="70" font-size="11" fill="#791F1F" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">Atlas 950 满配 8192卡（8E FP8/≈16MW 估）· 25.6万卡集群部署中</text>
       <circle cx="150" cy="330" r="8" fill="none" stroke="#B4B2A9" stroke-width="1.2" stroke-dasharray="4 3"/>
       <text x="150" y="355" font-size="11" fill="#888780" text-anchor="middle" style="paint-order:stroke;stroke:#fff;stroke-width:2.5px">AMD / 摩尔线程夸娥 / 海光 / 中兴（待核实）</text>
       <text x="40" y="445" font-size="11" fill="#5F5E5A">总算力 →（BF16 PFLOPS，对数）</text>
@@ -277,11 +279,12 @@
     <table>
       <tr><th>产品</th><th>厂商</th><th>卡数</th><th>卡型</th><th>总算力 BF16</th><th>系统功耗</th><th>机柜</th><th>能效 PF/kW</th><th>状态</th></tr>
       <tr><td><b>GB200 NVL72</b></td><td>NVIDIA</td><td class="num">72</td><td>GB200 GPU</td><td class="num">180 PF</td><td class="num">145 kW</td><td class="num">1</td><td class="num">1.24</td><td>商用</td></tr>
-      <tr><td><b>GB300 NVL72</b></td><td>NVIDIA</td><td class="num">72</td><td>GB300 Ultra</td><td class="num">≈350 PF（0.7E FP8）</td><td class="num tbd">≈145 kW（估）</td><td class="num">1</td><td class="num">≈2.4</td><td>商用（12–16 周交付）</td></tr>
+      <tr><td><b>GB300 NVL72</b></td><td>NVIDIA</td><td class="num">72</td><td>GB300 Ultra（288GB HBM3e）</td><td class="num">360 PF（0.72E FP8）</td><td class="num">132–140 kW</td><td class="num">1</td><td class="num">≈2.6</td><td>商用（Meta Clemente 已部署）</td></tr>
       <tr><td><b>Rubin200 NVL144</b></td><td>NVIDIA</td><td class="num">144</td><td>Rubin（HBM4）</td><td class="num">≈550 PF（1.1E FP8 设计值）</td><td class="num tbd">—</td><td class="num">1</td><td class="num tbd">—</td><td>2027Q2 量产</td></tr>
-      <tr><td><b>CloudMatrix 384</b></td><td>华为</td><td class="num">384</td><td>昇腾 910C</td><td class="num">≈300 PF</td><td class="num">≈559 kW</td><td class="num">16</td><td class="num">0.54</td><td>商用 750+ 套</td></tr>
-      <tr><td><b>Atlas 950 标准单元</b></td><td>华为</td><td class="num">1024</td><td>昇腾 950DT</td><td class="num">1 E FP8 ≈ 500 PF</td><td class="num tbd">≈2 MW（估）</td><td class="num">16</td><td class="num">≈0.25</td><td>2026 已量产交付</td></tr>
-      <tr><td><b>Atlas 950 满配</b></td><td>华为</td><td class="num">8192</td><td>昇腾 950DT</td><td class="num">8 E FP8 ≈ 4 EFLOPS</td><td class="num tbd">≈16 MW（估）</td><td class="num">160</td><td class="num">≈0.25</td><td>2026 已量产交付，占地≈1000㎡</td></tr>
+      <tr><td><b>CloudMatrix 384</b></td><td>华为</td><td class="num">384</td><td>昇腾 910C</td><td class="num">≈300 PF</td><td class="num">≈559 kW</td><td class="num">16</td><td class="num">0.54</td><td>已交付 1000+ 套</td></tr>
+      <tr><td><b>Atlas 950 标准单元</b></td><td>华为</td><td class="num">1024</td><td>昇腾 950DT</td><td class="num">1 E FP8 ≈ 500 PF</td><td class="num tbd">≈1.6 MW（按单柜100kW×16推算）</td><td class="num">20（16计算+4网络）</td><td class="num">≈0.31</td><td>首套 2026-10-15 点亮（Step 5 0Day适配）</td></tr>
+      <tr><td><b>Atlas 950 满配</b></td><td>华为</td><td class="num">8192</td><td>昇腾 950DT</td><td class="num">8 E FP8 / 16 E FP4</td><td class="num tbd">≈16 MW（估）</td><td class="num">160</td><td class="num">≈0.31</td><td>25.6万卡集群部署中，互联16.3PB/s</td></tr>
+      <tr><td><b>Atlas 960 超节点</b></td><td>华为</td><td class="num tbd">—</td><td>昇腾 960</td><td class="num tbd">未公开</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td>2026-09-17 提前发布（原规划 2027Q4）</td></tr>
       <tr><td><b>Atlas 850E 风冷</b></td><td>华为</td><td class="num">96</td><td>昇腾 850E</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num">—</td><td class="num tbd">—</td><td>商用（风冷免改造）</td></tr>
       <tr><td><b>磐久 AL128</b></td><td>阿里云</td><td class="num">128</td><td>自研</td><td class="num tbd">未公开</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td>2026Q4 小批量</td></tr>
       <tr><td><b>曦景 S600</b></td><td>沐曦</td><td class="num">64→320</td><td>曦景</td><td class="num tbd">未公开</td><td class="num tbd">—</td><td class="num tbd">—</td><td class="num tbd">—</td><td>320 卡已商用</td></tr>
@@ -293,11 +296,11 @@
     </table>
     </div>
   </div>
-  <footer>来源：NVIDIA / 华为 WAIC 2026 / 鲲鹏昇腾开发者社区 / SemiAnalysis / Tom's Hardware / TrendForce / 中证网（2026-07-17）。GB300 功耗、Atlas 950 功耗、AMD/摩尔线程/海光数据为估算或待官方公布。</footer>
+  <footer>来源：NVIDIA / Meta Engineering（2026-10 AIM-1210）/ 华为全联接大会 2026（9-17）/ 首套 Atlas 950 点亮报道（2026-10-15）/ CSDN Peerium 架构拆解 / TrendForce。Atlas 950 功耗按单柜 100kW 推算；AMD MI355X 平台/摩尔线程/海光数据待官方公布。</footer>
 </section>
 
 </main>
-<footer style="margin-top:6px">AI 算力情报站 · v0.2 正式版 — 数据核实至 2026-08-27；所有「估」/「待核实」项将在官方数据发布后持续更新。</footer>
+<footer style="margin-top:6px">AI 算力情报站 · v0.3 — 数据核实至 2026-10-29；所有「估」/「待核实」项将在官方数据发布后持续更新（每月 1 日 / 15 日自动巡检）。</footer>
 </div>
 
 <script>
@@ -336,7 +339,7 @@ document.querySelectorAll("[data-tip]").forEach(function(el){ el.addEventListene
 (function(){
   var nav = document.querySelectorAll("nav button");
   nav.forEach(function(b){ b.addEventListener("click", function(){ nav.forEach(function(x){ x.classList.remove("on"); }); b.classList.add("on"); document.querySelectorAll("main section").forEach(function(s){ s.classList.remove("on"); }); document.getElementById(b.getAttribute("data-tab")).classList.add("on"); }); });
-  var RAD2 = { "Claude Fable 5":["#CC785C",[62,95,59,90,88]], "Claude Opus 5":["#B4532A",[63,96,64.7,81,90]], "GPT-5.6 Sol":["#10A37F",[61,89,57,71,92]], "Kimi K3":["#0EA5A0",[60,85,56,68,93]], "DeepSeek V4-Pro":["#4D6BFE",[54,80.6,48.2,50,82]], "GLM-5.3":["#16A34A",[55,80,62.5,61,89]] };
+  var RAD2 = { "Claude Opus 5.5":["#CC785C",[58,96,60,90,92]], "GPT-6 Astra":["#10A37F",[53,90,55,82,90]], "Gemini 4 Argon":["#4285F4",[53,88,54,95,90]], "Kimi K3":["#0EA5A0",[44,85,56,68,88]], "DeepSeek V4.1 Flash":["#4D6BFE",[45,77,46,50,85]], "GLM-5.3":["#16A34A",[45,80,62.5,61,87]] };
   var cx=330, cy=250, R=120, n=5, names=["AA 指数","SWE-bench","HLE","LMArena","智能体"];
   var angles = names.map(function(_,i){ return -Math.PI/2 + i*2*Math.PI/n; });
   var pt = function(i, frac){ return [cx + R*frac*Math.cos(angles[i]), cy + R*frac*Math.sin(angles[i])]; };
