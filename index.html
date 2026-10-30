@@ -43,6 +43,18 @@
   .tip { position: absolute; pointer-events: none; background: #fff; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,.12); padding: 10px 12px; width: 300px; z-index: 10; display: none; font-size: 12px; line-height: 1.5; }
   .chartwrap { position: relative; }
   .b1 { color:#791f1f; font-weight:500; }
+  .news { display:flex; gap:10px; padding:9px 2px; border-bottom:1px solid #efefeb; font-size:12px; line-height:1.55; align-items:baseline; }
+  .news:last-child { border-bottom:none; }
+  .news:hover { background:#fafaf7; }
+  .news .dt { color:#888780; white-space:nowrap; font-variant-numeric:tabular-nums; font-size:11px; }
+  .news .src { font-size:10px; padding:0 6px; border-radius:3px; background:#f1efe8; color:#5f5e5a; white-space:nowrap; border:1px solid #e2e2de; }
+  .news .body b { font-weight:600; }
+  .news .body .sum { color:#6b6b66; font-size:11.5px; }
+  .news .imp { font-size:10px; color:#185fa5; white-space:nowrap; }
+  .srcpanel { display:flex; flex-wrap:wrap; gap:8px; }
+  .srcpanel .sp { border:1px solid #e8e8e4; border-radius:8px; padding:6px 10px; font-size:11px; line-height:1.5; }
+  .srcpanel .sp b { font-size:11.5px; font-weight:600; display:block; }
+  .srcpanel .sp span { color:#6b6b66; }
 </style>
 </head>
 <body>
@@ -54,6 +66,7 @@
     <button class="on" data-tab="t1">芯片管制分布图</button>
     <button data-tab="t2">大模型跑分榜</button>
     <button data-tab="t3">超节点对比</button>
+    <button data-tab="t4">产业情报</button>
   </nav>
 </header>
 <main>
@@ -299,6 +312,28 @@
   <footer>来源：NVIDIA / Meta Engineering（2026-10 AIM-1210）/ 华为全联接大会 2026（9-17）/ 首套 Atlas 950 点亮报道（2026-10-15）/ CSDN Peerium 架构拆解 / TrendForce。Atlas 950 功耗按单柜 100kW 推算；AMD MI355X 平台/摩尔线程/海光数据待官方公布。</footer>
 </section>
 
+<section id="t4">
+  <div class="card">
+    <h2>业界动态 · 滚动窗口（仅保留最新 10 条）<span class="tag">更新至 2026-10-30</span></h2>
+    <div class="sub">观察白名单 7 家信息源（下方面板），每次更新重新检索、<b>只保留最新 10 条，旧条目直接剔除不保留</b>。凡影响到前三个页签数据的内容（新模型上榜、超节点参数变化、管制规则调整），直接落地修改对应页签，新闻区仅作事件记录。</div>
+    <div id="newslist"></div>
+  </div>
+  <div class="card">
+    <h2>信息源白名单</h2>
+    <div class="sub">深度分析以 SemiAnalysis 为主，辅以榜单机构、供应链研究、硬件媒体与中外综合媒体；坚持官方口径优先、剔除未经证实的放风消息。</div>
+    <div class="srcpanel">
+      <div class="sp"><b>SemiAnalysis</b><span>算力产业深度分析：TCO 模型、数据中心电力、HBM/CoWoS 供需、GPU 租赁价格指数</span></div>
+      <div class="sp"><b>Artificial Analysis</b><span>模型智能指数与 API 价格，本站跑分主榜数据源</span></div>
+      <div class="sp"><b>TrendForce</b><span>HBM / 先进封装 / 服务器供应链数据</span></div>
+      <div class="sp"><b>Tom's Hardware</b><span>芯片与超节点硬件一手新闻</span></div>
+      <div class="sp"><b>Reuters Tech</b><span>综合外媒：管制政策、大厂动态</span></div>
+      <div class="sp"><b>机器之心</b><span>中文 AI 产业与模型发布</span></div>
+      <div class="sp"><b>NVIDIA Newsroom</b><span>官方口径：产品发布与规格</span></div>
+    </div>
+  </div>
+  <footer>新闻条目均来自上述白名单公开报道，标注日期为发布日；「联动」指该事件已在本站对应页签落地修改。滚动窗口：仅最新 10 条。</footer>
+</section>
+
 </main>
 <footer style="margin-top:6px">AI 算力情报站 · v0.3 — 数据核实至 2026-10-29；所有「估」/「待核实」项将在官方数据发布后持续更新（每月 1 日 / 15 日自动巡检）。</footer>
 </div>
@@ -335,6 +370,28 @@ function place(ev){ var cw = document.querySelector(".chartwrap").getBoundingCli
 function showTip(d, ev){ tip.querySelector(".tip-name").textContent = d.name; tip.querySelector(".tip-vendor").textContent = d.vendor; var b = tip.querySelector(".tip-badge"); b.textContent = BADGE_TEXT[d.policy]; b.className = "tip-badge " + (BADGE_CLS[d.policy] || "badge-cn"); tip.querySelector(".tip-policy").textContent = POLICY_TEXT[d.policy]; var tb = tip.querySelector(".tip-tab"); tb.innerHTML = ""; d.rows.forEach(function(r){ var tr = document.createElement("tr"); var td1 = document.createElement("td"); td1.className = "k"; td1.textContent = r[0]; var td2 = document.createElement("td"); td2.className = "v"; td2.textContent = r[1]; tr.appendChild(td1); tr.appendChild(td2); tb.appendChild(tr); }); tip.style.display = "block"; place(ev); }
 document.querySelectorAll(".chip").forEach(function(c){ var d = CHIPS[+c.getAttribute("data-idx")]; var orig = +c.getAttribute("r"); c.addEventListener("mouseenter", function(e){ c.setAttribute("r", orig + 2.5); c.setAttribute("stroke", "#111"); c.setAttribute("stroke-width", "2"); showTip(d, e); }); c.addEventListener("mousemove", place); c.addEventListener("mouseleave", function(){ c.setAttribute("r", orig); c.setAttribute("stroke", "#fff"); c.setAttribute("stroke-width", "1.5"); tip.style.display = "none"; }); });
 document.querySelectorAll("[data-tip]").forEach(function(el){ el.addEventListener("mouseenter", function(e){ tip.querySelector(".tip-name").textContent = ""; tip.querySelector(".tip-vendor").textContent = ""; var b = tip.querySelector(".tip-badge"); b.textContent = ""; b.className = "tip-badge"; tip.querySelector(".tip-policy").textContent = ""; var tb = tip.querySelector(".tip-tab"); tb.innerHTML = ""; var tr = document.createElement("tr"); var td = document.createElement("td"); td.className = "v"; td.textContent = el.getAttribute("data-tip"); tr.appendChild(td); tb.appendChild(tr); tip.style.display = "block"; place(e); }); el.addEventListener("mousemove", place); el.addEventListener("mouseleave", function(){ tip.style.display = "none"; }); });
+
+var NEWS = [
+  {d:"10-23", s:"Inception 官宣", t:"Mercury 3 扩散式语言模型发布：1068 tokens/s", sum:"1M 上下文，自报 12 项基准 8 项领先（GPT-6 Luna、Claude Haiku 5.5 各取 2 项）；扩散范式推理速度首次进入主流视野。", imp:"关注"},
+  {d:"10-20", s:"MiniMax 官方", t:"MiniMax M3.1 Flash 开源权重发布", sum:"智能体成本较上代降 70%，$0.15/M 输入，自报 15 项基准 3 项第一；权重已上 Hugging Face。", imp:"跑分榜候选"},
+  {d:"10-17", s:"DeepSeek 官方 / llm-stats", t:"DeepSeek V4.1-Flash-1017 发布", sum:"1M 上下文，$0.30/$1.20 定价，AA 指数 45 进入国产第一梯队；彭博测算中美差距收窄至约 3%。", imp:"✅ 跑分榜已更新"},
+  {d:"10-17", s:"NVIDIA 官方", t:"Nemotron 3.5 Super VL（120B）与 Bolt 发布", sum:"开源；Super VL 主打「同级别最快智能体模型」，Bolt 可在 24GB 显存运行；OpenMDW-1.1 协议。", imp:"关注"},
+  {d:"10-16", s:"微软官方", t:"MAI-Base-2 完成预训练：2.8T 参数、全程无蒸馏", sum:"微软自研基座模型进入后训练阶段，自报 held-out 测试胜 4 个外部模型，暂未开放访问。", imp:"关注"},
+  {d:"10-15", s:"Meta 官方 / Hugging Face", t:"Muse Spark Open 开源：816B/42B", sum:"Meta 称迄今最强美国开源权重模型；两台 M5 Ultra Mac Studio 即可本地运行；AA 指数 39、MCP-Atlas 89.2。", imp:"✅ 跑分榜已更新"},
+  {d:"10-15", s:"电子技术应用 / 华为", t:"首套 1024 卡 Atlas 950 SuperPoD 点亮", sum:"业界最大规模超节点首次落地，256TB 统一内存、RTT 3μs；同步完成阶跃星辰 Step 5 Preview 的 0Day 适配。", imp:"✅ 超节点已更新"},
+  {d:"10-13", s:"Google 官方 / Enginix", t:"Gemini 4 Argon 正式 GA", sum:"AI Studio / Vertex / Gemini Enterprise 全量开放，$2/$10 定价（缓存 95% 折扣）；Text Arena 1525 分第一，Vals Index #1。", imp:"✅ 跑分榜已更新"},
+  {d:"10-08", s:"Anthropic 官方", t:"Claude Haiku 5.5 发布 + 智能体安全警告", sum:"主打极低延迟与高频自动化场景；同期发布自复制智能体行为与「AI 蠕虫」风险研究，呼吁行业建立验证护栏。", imp:"关注"},
+  {d:"10-06", s:"Mistral AI 官方 / llm-stats", t:"Mistral Large 4 预览：1.05T/52B", sum:"欧洲本土 3800 张 Grace Blackwell 训练，1M 上下文，SciCode 91.8%（开源 SOTA）；预览半价，权重月底开放。", imp:"✅ 跑分榜已更新"}
+];
+(function(){
+  var box = document.getElementById("newslist");
+  if (!box) return;
+  NEWS.forEach(function(n){
+    var div = document.createElement("div"); div.className = "news";
+    div.innerHTML = '<span class="dt">' + n.d + '</span><span class="src">' + n.s + '</span><span class="body"><b>' + n.t + '</b><br><span class="sum">' + n.sum + '</span></span>' + (n.imp ? '<span class="imp">' + n.imp + '</span>' : '');
+    box.appendChild(div);
+  });
+})();
 
 (function(){
   var nav = document.querySelectorAll("nav button");
