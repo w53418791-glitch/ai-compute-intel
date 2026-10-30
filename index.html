@@ -339,7 +339,7 @@ document.querySelectorAll("[data-tip]").forEach(function(el){ el.addEventListene
 (function(){
   var nav = document.querySelectorAll("nav button");
   nav.forEach(function(b){ b.addEventListener("click", function(){ nav.forEach(function(x){ x.classList.remove("on"); }); b.classList.add("on"); document.querySelectorAll("main section").forEach(function(s){ s.classList.remove("on"); }); document.getElementById(b.getAttribute("data-tab")).classList.add("on"); }); });
-  var RAD2 = { "Claude Opus 5.5":["#CC785C",[58,96,60,90,92]], "GPT-6 Astra":["#10A37F",[53,90,55,82,90]], "Gemini 4 Argon":["#4285F4",[53,88,54,95,90]], "Kimi K3":["#0EA5A0",[44,85,56,68,88]], "DeepSeek V4.1 Flash":["#4D6BFE",[45,77,46,50,85]], "GLM-5.3":["#16A34A",[45,80,62.5,61,87]] };
+  var RAD2 = { "Claude Opus 5.5":["#CC785C",[58,96,60,1510,95]], "GPT-6 Astra":["#10A37F",[53,90,55,1470,92]], "Gemini 4 Argon":["#4285F4",[53,88,54,1525,92]], "Kimi K3":["#0EA5A0",[44,85,56,1475,90]], "DeepSeek V4.1 Flash":["#4D6BFE",[45,77,46,1420,87]], "GLM-5.3":["#16A34A",[45,80,62.5,1465,89]] };
   var cx=330, cy=250, R=120, n=5, names=["AA 指数","SWE-bench","HLE","LMArena","智能体"];
   var angles = names.map(function(_,i){ return -Math.PI/2 + i*2*Math.PI/n; });
   var pt = function(i, frac){ return [cx + R*frac*Math.cos(angles[i]), cy + R*frac*Math.sin(angles[i])]; };
